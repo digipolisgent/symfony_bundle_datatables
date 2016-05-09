@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * 
  * @package Phpro\DatatablesBundle\DependencyInjection\Compiler
  */
-class DatatableCompilerPass implements CompilerPassInterface
+class DatatablesCompilerPass implements CompilerPassInterface
 {
     const MANAGER_DEFINITION = 'phpro_datatables.manager';
     const TABLE_TAG          = 'phpro_datatables.table';
