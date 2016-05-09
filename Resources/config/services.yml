@@ -1,0 +1,3 @@
+services:
+    phpro_datatables.manager:
+        class: phpro\DatatablesBundle\Manager\DatatableManager

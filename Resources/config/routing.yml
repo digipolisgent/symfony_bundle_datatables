@@ -1,0 +1,3 @@
+phpro_datatables_homepage:
+    path:     /
+    defaults: { _controller: phproDatatablesBundle:Default:index }
