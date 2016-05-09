@@ -1,0 +1,19 @@
+{
+    "name": "phpro/datatables",
+    "description": "Datatables.net integration into Symfony2",
+    "keywords": ["Datatables", "DataTables.net", "Symfony", "PHPro"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arne Van den Bogaert",
+            "email": "arne.vandenbogaert@district01.be"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+
+    }
+}
