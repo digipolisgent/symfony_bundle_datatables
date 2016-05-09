@@ -8,3 +8,13 @@ services:
     # Manager
     phpro_datatables.manager:
         class: Phpro\DatatablesBundle\Manager\DatatableManager
+
+
+    # Twig
+    phpro_datatables.twig_extension:
+        class: Phpro\DatatablesBundle\Twig\DatatableExtension
+        arguments:
+            - '@translator'
+            - '@router'
+        tags:
+            - { name: 'twig.extension' }

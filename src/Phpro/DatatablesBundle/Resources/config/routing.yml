@@ -1,3 +1,3 @@
 phpro_datatables.data_api:
     path: /_datatables/{alias}/data
-    defaults: { _controller: }
+    defaults: { _controller: phpro_datatables.controller:dataAction }

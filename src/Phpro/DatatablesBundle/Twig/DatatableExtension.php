@@ -30,6 +30,8 @@ class DatatableExtension extends \Twig_Extension
      */
     private $router;
 
+    const DEFAULT_TEMPLATE = 'DatatablesBundle:DataTable:default_table.html.twig';
+
     /**
      * DatatableExtension constructor.
      *
@@ -42,8 +44,7 @@ class DatatableExtension extends \Twig_Extension
         $this->translator = $translator;
         $this->router = $router;
         $resolver = new OptionsResolver();
-        $resolver->setRequired(['template']);
-
+        $resolver->setDefault('template', self::DEFAULT_TEMPLATE);
         $this->options = $resolver->resolve($options);
     }
 
