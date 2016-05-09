@@ -36,5 +36,5 @@ interface DatatableManagerInterface
      * @param DatatableInterface $datatable
      * @throws RuntimeException
      */
-    public function add(DatatableInterface $datatable) : void;
+    public function add(DatatableInterface $datatable);
 }

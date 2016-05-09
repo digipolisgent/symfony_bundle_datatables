@@ -61,7 +61,7 @@ class DatatableManager implements DatatableManagerInterface
      * @param DatatableInterface $datatable
      * @throws RuntimeException
      */
-    public function add(DatatableInterface $datatable) : void
+    public function add(DatatableInterface $datatable)
     {
         if (true === $this->has($datatable->getAlias())) {
             throw new RuntimeException(

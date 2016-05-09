@@ -62,7 +62,7 @@ class Request implements RequestInterface
      */
     public function getPage() : int
     {
-        $offset = $this->request->query->get('start', $this->defaults['page_size']);
+        $offset = $this->request->query->get('start', 0);
         $size = $this->getPageSize();
 
         return (int)floor($offset / $size) + 1;

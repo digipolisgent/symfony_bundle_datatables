@@ -13,7 +13,7 @@ use Symfony\Component\Translation\TranslatorInterface;
  *
  * @package Phpro\DatatablesBundle\Twig
  */
-class DatatableExtension extends \Twig_Extension
+class DatatablesExtension extends \Twig_Extension
 {
     /**
      * @var TranslatorInterface
@@ -30,7 +30,7 @@ class DatatableExtension extends \Twig_Extension
      */
     private $router;
 
-    const DEFAULT_TEMPLATE = 'DatatablesBundle:DataTable:default_table.html.twig';
+    const DEFAULT_TEMPLATE = 'DatatablesBundle:Datatables:default_table.html.twig';
 
     /**
      * DatatableExtension constructor.

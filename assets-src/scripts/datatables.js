@@ -15448,3 +15448,14 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 
 return DataTable;
 }));
+(function($){
+    $(function(){
+        $('table.datatable').each(function () {
+            $(this).DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": $(this).data('uri')
+            });
+        });
+    });
+})(jQuery);

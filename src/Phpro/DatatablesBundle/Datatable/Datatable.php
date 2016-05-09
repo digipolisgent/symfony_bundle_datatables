@@ -62,7 +62,11 @@ class Datatable implements DatatableInterface
             $data[] = $row;
         }
 
-        return new Response($data);
+        return new Response([
+            'data'          => $data,
+            'draw'          => $request->getDraw() + 1,
+            'recordsTotal'  => 'TODO'
+        ]);
     }
 
     /**

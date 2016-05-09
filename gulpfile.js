@@ -5,7 +5,7 @@ var uglify = require('gulp-uglify');
 var scripts =  [
     './node_modules/datatables.net/js/jquery.dataTables.js',
     './node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
-    './Resources/scripts/init.js'
+    './assets-src/scripts/init.js'
 ];
 
 gulp.task('scripts', function () {
@@ -14,7 +14,7 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('./assets-src/scripts/'))
         .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
-        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/Public/js/'));
+        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/js/'));
 });
 
 gulp.task('default', ['scripts']);

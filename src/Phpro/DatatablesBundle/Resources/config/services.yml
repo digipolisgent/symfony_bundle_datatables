@@ -12,7 +12,7 @@ services:
 
     # Twig
     phpro_datatables.twig_extension:
-        class: Phpro\DatatablesBundle\Twig\DatatableExtension
+        class: Phpro\DatatablesBundle\Twig\DatatablesExtension
         arguments:
             - '@translator'
             - '@router'
