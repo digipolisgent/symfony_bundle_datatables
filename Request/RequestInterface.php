@@ -31,6 +31,13 @@ interface RequestInterface
     public function getPage() : int;
 
     /**
+     * Returns the offset, if this is preferred above getPage
+     * 
+     * @return int
+     */
+    public function getOffset() : int;
+
+    /**
      * Extracts the sort parameter from the request object
      *
      * @return string

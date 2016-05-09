@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Reference;
 class DatatableCompilerPass implements CompilerPassInterface
 {
     const MANAGER_DEFINITION = 'phpro_datatables.manager';
-    const TABLE_TAG          = 'phpro_datatable.table';
+    const TABLE_TAG          = 'phpro_datatables.table';
 
     /**
      * Fetches all Datatables and adds them to the DatatableManager

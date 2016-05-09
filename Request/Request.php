@@ -69,6 +69,16 @@ class Request implements RequestInterface
     }
 
     /**
+     * Returns the offset of data requested
+     * 
+     * @return int
+     */
+    public function getOffset() : int
+    {
+        return $this->request->query->get('start', 0);
+    }
+
+    /**
      * Extracts the sort parameter from the request object
      *
      * @return string

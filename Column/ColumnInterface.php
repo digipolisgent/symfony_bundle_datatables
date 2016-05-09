@@ -30,4 +30,11 @@ interface ColumnInterface
      * @return string
      */
     public function getLabel() : string;
+
+    /**
+     * Returns all options
+     * 
+     * @return array
+     */
+    public function getOptions() : array;
 }
