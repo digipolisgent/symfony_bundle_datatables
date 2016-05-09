@@ -1,0 +1,10 @@
+services:
+    # Controller
+    phpro_datatables.controller:
+        class: Phpro\DatatablesBundle\Controller\DataController
+        arguments:
+            - '@phpro_datatables.manager'
+
+    # Manager
+    phpro_datatables.manager:
+        class: Phpro\DatatablesBundle\Manager\DatatableManager

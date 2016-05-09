@@ -15,5 +15,15 @@
     },
     "require-dev": {
 
+    },
+    "autoload": {
+        "psr-0": {
+            "Phpro\\DatatablesBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "PhproTest\\AnnotatedCacheBundle\\": "tests"
+        }
     }
 }

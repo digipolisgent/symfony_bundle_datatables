@@ -11,10 +11,10 @@ var scripts =  [
 gulp.task('scripts', function () {
     return gulp.src(scripts, {base: '.'})
         .pipe(concat('datatables.js'))
-        .pipe(gulp.dest('./Resources/scripts/'))
+        .pipe(gulp.dest('./assets-src/scripts/'))
         .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
-        .pipe(gulp.dest('./Resources/Public/js/'));
+        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/Public/js/'));
 });
 
 gulp.task('default', ['scripts']);
