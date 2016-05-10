@@ -39,7 +39,7 @@ class Column implements ColumnInterface
 
         $this->resolver->setDefaults([
             'property'   => $name,
-            'extractor'  => new PropertyExtractor($name),
+            'extractor'  => new PropertyExtractor($options['property'] ?? $name),
             'attributes' => ['data-name' => $name],
             'label'      => ucfirst($name)
         ]);
