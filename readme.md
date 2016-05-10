@@ -153,7 +153,7 @@ Render the table with the Twig function:
 ```twig
 {% block content %}
     <div class="some-wrapper">
-        {{ data_table_render_table(table) }}
+        {{ datatables_render_table(table) }}
     </div>
 {% endblock %}
 ```
