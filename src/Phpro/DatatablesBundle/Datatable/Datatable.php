@@ -51,10 +51,10 @@ class Datatable implements DatatableInterface
      */
     public function buildResponse(RequestInterface $request) : Response
     {
-        $source = $this->extractor->extract($request);
+        $result = $this->extractor->extract($request);
         $data = [];
 
-        foreach ($source as $target) {
+        foreach ($result->getData() as $target) {
             $row = [];
             foreach ($this->columns as $column) {
                 $row[] = $column->extractValue($target);
@@ -62,11 +62,7 @@ class Datatable implements DatatableInterface
             $data[] = $row;
         }
 
-        return new Response([
-            'data'          => $data,
-            'draw'          => $request->getDraw() + 1,
-            'recordsTotal'  => 'TODO'
-        ]);
+        return new Response($data, $result->getTotalRecords(), $request->getDraw() + 1);
     }
 
     /**

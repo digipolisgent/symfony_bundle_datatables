@@ -11,5 +11,5 @@ use Phpro\DatatablesBundle\Request\RequestInterface;
  */
 interface DataExtractorInterface
 {
-    public function extract(RequestInterface $request) : array;
+    public function extract(RequestInterface $request) : ExtractionInterface;
 }
