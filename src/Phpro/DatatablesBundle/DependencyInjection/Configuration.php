@@ -12,17 +12,22 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+    const ROOT_NODE = 'phpro_datatables';
+
     /**
      * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('phpro_datatables');
+        $rootNode = $treeBuilder->root(self::ROOT_NODE);
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->scalarNode('table_template')
+                ->defaultValue('DatatablesBundle:Datatables:default_table.html.twig')
+            ->end()
+        ;
 
         return $treeBuilder;
     }

@@ -16,5 +16,6 @@ services:
         arguments:
             - '@translator'
             - '@router'
+            - { template: '%phpro_datatables.table_template%' }
         tags:
             - { name: 'twig.extension' }

@@ -22,6 +22,10 @@ class DatatablesExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        foreach($config as $key => $item) {
+            $container->setParameter(Configuration::ROOT_NODE . ".$key", $item);
+        }
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
