@@ -1,6 +1,6 @@
 #PHPro Datatables
 
-### Installing this bundle :
+## Installing this bundle :
 
 #### 1. Composer Require
 ```sh
@@ -23,8 +23,16 @@ public function registerBundles()
 Add the bundle's routes to your application in your routing.yml file :
 
 ```yml
-phpro_datatables:
+datatables:
     resource: "@DatatablesBundle/Resources/config/routing.yml"
+```
+
+Add the bundle's css to your application in your layout.html.twig file
+```twig
+    {% block stylesheets %}
+        <!--- Other stylesheets -->
+        <link rel="stylesheet" href="{{ asset('bundles/datatables/css/datatables.min.css') }}">
+    {% endblock %}
 ```
 
 Add the bundle's javascript to your application in your layout.html.twig file :
@@ -36,7 +44,7 @@ Add the bundle's javascript to your application in your layout.html.twig file :
 ```
 This bundle assumes you have a working version of jQuery running inside your application.
 
-### Creating a Datatable :
+## Creating a Datatable :
 
 #### 1. Create a DataExtractor
 The data extractor holds one method; 'extract'. This method will recieve a DatatableRequest which holds the default
@@ -157,3 +165,188 @@ Render the table with the Twig function:
     </div>
 {% endblock %}
 ```
+
+## Elements
+
+The DatatableBundle contains two "Element" classes to generate labels & buttons. They generate a simple HTML string that
+will be outputted by the Datatable. This way you can easily create edit/delete buttons and/or labels.
+
+Both elements implement the ElementInterface which contains one method 'generate'. This method accepts an array with
+options as an argument.
+
+#### 1. Buttons
+The Button element generates an "a" tag with the default btn class.
+
+The Button element has 4 options :
+
+1. **link** : The uri that will be added to the href attribute. (Default: '#')
+
+2. **type**: The specified type will be added to the btn-%s class. So "danger" would result in btn btn-danger. (Default: 'danger')
+
+3. **class**: Custom classname will be added to the class attribute (Default: null)
+
+4. **text**: The html body of the a-element. (Default: 'Edit')
+
+#### 2. Labels
+The Label element generates a 'span' tag with the default 'label' class.
+
+The Label element has 3 options:
+
+1. **type**: The specified type will be added to the label-%s class. So "success" would result in label-success. (Default: 'success')
+
+2. **class**: Custom classname will be added to the class attribute (Default: null)
+
+3. **text**: The html body of the span-element. (Default: 'yes')
+
+#### 3. Example
+So generating a button or label is easy. As an example we will create a simple label :
+```php
+$label = Label::generate([
+    'type' => 'danger',
+    'class' => 'example-label',
+    'text' => 'Some Generated Text'
+]);
+```
+
+Would result in :
+
+```html
+<span class="label label-danger example-label">Some Generated Text</span>
+```
+
+## Advanced Usage
+
+#### Columns
+##### 1. Column options
+The default columns have a set of predefined options you can pass on.
+
+**Property** : This defines which property should be extracted by the column. The default extractor will use the Symfony\PropertyAccess
+class the access the objects properties. See : http://symfony.com/doc/current/components/property_access/introduction.html for more information
+on the PropertyAccess class and how you should form the "property" option.
+
+```php
+$shop = new Shop();
+$shop->setName('Some Shop');
+$user = new User();
+$user->setShop($shop);
+
+$column = new Column('shop', ['property' => 'shop.name']);
+
+$value = $column->extractValue($user); // $value === 'Some Shop'
+```
+
+**Extractor** : This option should contain a valid callback or callable class that implements the __invoke method. You
+can provide a custom extractor as a means to override the default PropertyAccess extractor used by the default Column.
+With the use of custom extractors, you can _almost_ do anything. In this example we use a custom extractor to generate
+a button based on the given entity.
+
+```php
+$callback = function(User $user) use($router) {
+    return Button::generate([
+        'link' => $router->generate('user_edit', ['id' => $user->getId()]),
+        'text' => 'Edit User'
+    ])
+};
+
+$column = new Column('_edit', ['extractor' => $callback]);
+```
+When using a custom extractor, the "property" option can be omitted.
+In the table, this column would show the following for our User entity :
+
+```html
+<tr>
+    <!-- other columns-->
+    <td>
+        <a href="/user/48/edit" class="btn btn-danger btn-flat">Edit User</a>
+    </td>
+</tr>
+```
+
+**Attributes** : This option supports an array of key => $value attributes. These attributes will be rendered to the
+column header in the table. By default there's a data-name attribute present.
+
+```php
+$column = new Column('name', ['attributes' => ['data-status' => 'status_1']]);
+```
+
+The previous code would result in the following :
+
+```html
+<tr>
+    <!-- other columns -->
+    <th data-status="status_1">Name</th>
+</tr>
+```
+
+**Label**: You can provide a custom label for each column. The label is used in the table headers. Labels are passed trough
+the translator component before being outputted. Lets assume the following code and general.first_name is translated
+into "First Name":
+
+```php
+$column = new Column('first_name', ['label' => 'general.first_name']);
+```
+
+The previous code would result in the following :
+
+```html
+<tr>
+    <!-- other columns -->
+    <th data-name="first_name">First Name</th>
+</tr>
+```
+
+By default the label is generated as ucfirst($column->getName());
+
+##### 1. Custom columns
+In this bundle you have the default "Column" object that is used to define the table's column. The 'createColumn' method
+in the Datatable will create a default Column with the given parameters.
+
+But it's also possible to extend or create a custom column using the ColumnInterface. Custom columns are added through
+the 'addColumn' method in the Datatable
+
+```php
+$datatable = new Datatable('example', $extractor);
+
+$datatable
+    ->createColumn('id')
+    ->addColumn(new CustomColumn())
+;
+```
+
+
+#### Bootstrap configuration
+
+To enable the bootstrap implementation of Datatables in your application, you need to include different files
+in your layout.html.twig file:
+
+```twig
+{% block stylesheets %}
+    <!--- Other stylesheets -->
+    <link rel="stylesheet" href="{{ asset('bundles/datatables/css/datatables-bootstrap.min.css') }}">
+{% endblock %}
+```
+
+Note how instead of the default datatables.min.css we include datatables-bootstrap.min.css. You only need to include
+one of these two files. Not both.
+
+The same goes for the javascript file:
+
+```twig
+{% block javascripts %}
+    <!-- other scripts -->
+    <script src="{{ asset('bundles/datatables/js/datatables-bootstrap.min.js') }}"></script>
+{% endblock %}
+```
+
+#### Font-Awesome icons
+
+To enable the use of Font-Awesome icons (sorting icons etc.) you need to include a second css file:
+```twig
+{% block stylesheets %}
+    <!--- Other stylesheets -->
+    <link rel="stylesheet" href="{{ asset('bundles/datatables/css/datatables-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/datatables/css/datatables-font-awesome.min.css') }}">
+{% endblock %}
+```
+
+Note that here we do include both files. You can combine font-awesome icons with the default datatables layout.
