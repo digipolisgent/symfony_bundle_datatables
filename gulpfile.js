@@ -7,9 +7,15 @@ var cleanCss = require('gulp-clean-css');
 
 var scripts =  [
     './node_modules/datatables.net/js/jquery.dataTables.js',
+    './assets-src/scripts/init.js'
+];
+
+var scripts_bootstrap = [
+    './node_modules/datatables.net/js/jquery.dataTables.js',
     './node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
     './assets-src/scripts/init.js'
 ];
+
 
 var conf = {
     bootstrap: ['./node_modules/datatables.net-bs/css/*.css', './node_modules/datatables.net-bs/css/*.scss'],
@@ -24,6 +30,16 @@ gulp.task('scripts', function () {
         .pipe(uglify())
         .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/js/'));
 });
+
+gulp.task('scripts-bootstrap', function () {
+    return gulp.src(scripts_bootstrap, {base: '.'})
+        .pipe(concat('datatables-bootstrap.js'))
+        .pipe(gulp.dest('./assets-src/scripts/'))
+        .pipe(rename({extname: '.min.js'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/js/'));
+});
+
 
 gulp.task('sass-bootstrap', function(done){
     gulp.src(conf.bootstrap)
@@ -45,4 +61,4 @@ gulp.task('sass-font-awesome', function(done){
         .on('end', done)
 });
 
-gulp.task('default', ['scripts', 'sass-bootstrap', 'sass-font-awesome']);
+gulp.task('default', ['scripts', 'scripts-bootstrap', 'sass-bootstrap', 'sass-font-awesome']);
