@@ -7,7 +7,7 @@ namespace Phpro\DatatablesBundle\Element;
  *
  * Creates a HTML-Label for Bootstrap3
  *
- * @package Efashion\AppBundle\DataTable
+ * @package Phpro\DatatablesBundle\Element
  */
 class Label implements ElementInterface
 {
@@ -38,6 +38,12 @@ class Label implements ElementInterface
     public static function generate(array $options = []) : string
     {
         $options = array_merge(self::$defaultOptions, $options);
-        return sprintf(self::$template, $options['type'], $options['class'], $options['text']);
+
+        return sprintf(
+            self::$template,
+            (string)$options['type'],
+            (string)$options['class'],
+            (string)$options['text']
+        );
     }
 }

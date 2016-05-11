@@ -23,11 +23,6 @@ class Column implements ColumnInterface
     private $name;
 
     /**
-     * @var OptionsResolver
-     */
-    protected $resolver;
-
-    /**
      * Column constructor.
      *
      * @param $name
@@ -35,24 +30,34 @@ class Column implements ColumnInterface
      */
     public function __construct(string $name, array $options = [])
     {
-        $this->resolver = new OptionsResolver();
+        $this->options  = $options; // options need to be accessible by the resolver to check if property is passed
+        $this->name     = $name;
+        $this->options  = $this->optionsResolver()->resolve($options);
+    }
 
-        $this->resolver->setDefaults([
-            'property'   => $name,
-            'extractor'  => new PropertyExtractor($options['property'] ?? $name),
-            'attributes' => ['data-name' => $name],
-            'label'      => ucfirst($name)
+    /**
+     * This method can be overridden if extra options are to be added to the resolver.
+     *
+     * @return OptionsResolver
+     */
+    protected function optionsResolver() : OptionsResolver
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setDefaults([
+            'property'   => $this->name,
+            'extractor'  => new PropertyExtractor($this->options['property'] ?? $this->name),
+            'attributes' => ['data-name' => $this->name],
+            'label'      => ucfirst($this->name)
         ]);
 
-        $this->resolver->setAllowedTypes('label', ['string']);
-        $this->resolver->setAllowedTypes('property', ['string']);
-        $this->resolver->setAllowedTypes('attributes', ['array']);
-        $this->resolver->setAllowedValues('extractor', function ($value) {
+        $resolver->setAllowedTypes('label', ['string']);
+        $resolver->setAllowedTypes('property', ['string']);
+        $resolver->setAllowedTypes('attributes', ['array']);
+        $resolver->setAllowedValues('extractor', function ($value) {
             return is_callable($value);
         });
 
-        $this->options = $this->resolver->resolve($options);
-        $this->name = $name;
+        return $resolver;
     }
 
     /**

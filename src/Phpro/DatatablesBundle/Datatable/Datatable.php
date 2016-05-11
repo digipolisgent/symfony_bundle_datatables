@@ -40,6 +40,7 @@ class Datatable implements DatatableInterface
     {
         $this->extractor = $extractor;
         $this->alias = $alias;
+        $this->columns = [];
     }
 
     /**

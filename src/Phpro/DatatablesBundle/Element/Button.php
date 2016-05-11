@@ -7,7 +7,7 @@ namespace Phpro\DatatablesBundle\Element;
  *
  * Creates a HTML-button with bootstrap markup
  *
- * @package Efashion\AppBundle\DataTable
+ * @package Phpro\DatatablesBundle\Element
  */
 class Button implements ElementInterface
 {
@@ -39,6 +39,13 @@ class Button implements ElementInterface
     public static function generate(array $options = []) : string
     {
         $options = array_merge(self::$defaultOptions, $options);
-        return sprintf(self::$template, $options['link'], $options['type'], $options['class'], $options['text']);
+
+        return sprintf(
+            self::$template,
+            (string)$options['link'],
+            (string)$options['type'],
+            (string)$options['class'],
+            (string)$options['text']
+        );
     }
 }

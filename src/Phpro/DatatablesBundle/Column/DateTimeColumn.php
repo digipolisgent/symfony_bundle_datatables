@@ -3,6 +3,7 @@ declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Column;
 
 use Phpro\DatatablesBundle\Exception\RuntimeException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class DateTimeColumn
@@ -20,21 +21,20 @@ class DateTimeColumn extends Column
     private $format = 'd-m-Y H:i:s';
 
     /**
-     * DateTimeColumn constructor.
-     * Sets the default \DateTime format, and adds it to the options resolver before resolving.
+     * Adds two extra options on top of the default options in the resolver
      *
-     * @param string $name
-     * @param array $options
+     * @return OptionsResolver
      */
-    public function __construct($name, array $options)
+    protected function optionsResolver() : OptionsResolver
     {
-        parent::__construct($name, []);
+        $resolver = parent::optionsResolver();
+        $resolver->setDefault('allow_null', true);
+        $resolver->setDefault('format', $this->format);
 
-        $this->resolver->setDefault('format', $this->format);
-        $this->resolver->setDefault('allow_null', true);
-        $this->resolver->setAllowedValues('allow_null', [true, false]);
+        $resolver->setAllowedTypes('format', ['string']);
+        $resolver->setAllowedTypes('allow_null', ['boolean']);
 
-        $this->options = $this->resolver->resolve($options);
+        return $resolver;
     }
 
     /**
@@ -47,10 +47,10 @@ class DateTimeColumn extends Column
     public function extractValue($target) : string
     {
         /** @var callable $extractor */
-        $extractor = $this->getOption('extractor');
+        $extractor = $this->options['extractor'];
         $dateTime = $extractor($target);
 
-        if(null === $dateTime && true === $this->getOption('allow_null')) {
+        if(null === $dateTime && true === $this->options['allow_null']) {
             return '';
         }
 
@@ -61,6 +61,6 @@ class DateTimeColumn extends Column
             );
         }
 
-        return $dateTime->format($this->getOption('format'));
+        return $dateTime->format($this->options['format']);
     }
 }
