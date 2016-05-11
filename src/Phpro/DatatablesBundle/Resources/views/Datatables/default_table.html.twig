@@ -1,10 +1,6 @@
 <table data-uri="{{ uri }}" class="table datatable" role="grid">
     <thead>
-    <tr>
-        {% for column in table.getColumns() %}
-            {{ datatables_render_column(column) }}
-        {% endfor %}
-    </tr>
+        {% include 'DatatablesBundle:Datatables:default_table_header.html.twig' %}
     </thead>
     <tbody>
         <!--- data be here --->
