@@ -4,6 +4,9 @@ namespace Phpro\DatatablesBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -14,6 +17,9 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class DatatablesExtension extends Extension
 {
+    const DATATABLES_CONFIG_PATH   = '/Resources/config/Datatables';
+    const DATATABLES_CONFIG_SUFFIX = '.datatable.yml';
+
     /**
      * {@inheritdoc}
      */
@@ -22,11 +28,38 @@ class DatatablesExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        foreach($config as $key => $item) {
+        foreach ($config as $key => $item) {
             $container->setParameter(Configuration::ROOT_NODE . ".$key", $item);
         }
-        
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
+
+        $this->loadDatatablesConfig($container);
+    }
+
+    /**
+     * Loads all the datatable config files from other bundles.
+     *
+     * @param ContainerBuilder $container
+     */
+    private function loadDatatablesConfig(ContainerBuilder $container)
+    {
+        $bundles = $container->getParameter('kernel.bundles');
+
+        foreach ($bundles as $bundle) {
+            $bundle = new \ReflectionClass($bundle);
+            $path = dirname($bundle->getFileName()) . self::DATATABLES_CONFIG_PATH;
+
+            if (!is_dir($path)) {
+                continue;
+            }
+
+            $loader = new Loader\YamlFileLoader($container, new FileLocator($path));
+
+            foreach (glob($path . '/*' . self::DATATABLES_CONFIG_SUFFIX) as $file) {
+                $loader->load($file);
+            }
+        }
     }
 }

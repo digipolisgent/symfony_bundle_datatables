@@ -1,0 +1,13 @@
+{% set extractor_service = bundle ~ '.datatables.extractor.' ~ name %}
+{% set datatable_service = bundle ~ '.datatables.table.' ~ name %}
+services:
+    {{ extractor_service }}:
+        class: {{ class_extractor }}
+
+    {{ datatable_service }}:
+        class: Phpro\DatatablesBundle\Datatable\Datatable
+        factory: [{{ class_factory }}, 'create']
+        arguments:
+            - '@{{ extractor_service }}'
+        tags:
+            - { name: 'phpro_datatables.table' }
