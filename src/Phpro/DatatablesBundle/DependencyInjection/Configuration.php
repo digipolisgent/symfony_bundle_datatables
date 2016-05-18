@@ -13,8 +13,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     const ROOT_NODE = 'phpro_datatables';
-    const DATATABLES_CONFIG_PATH   = '/Resources/config/datatables';
-    const DATATABLES_CONFIG_SUFFIX = '.datatable.yml';
     const PATH_FACTORY   = '/Datatables/Factory';
     const PATH_EXTRACTOR = '/Datatables/DataExtractor';
     const PATH_CONFIG    = '/Resources/config/datatables';

@@ -46,7 +46,7 @@ class DatatablesExtension extends Extension
 
         foreach ($bundles as $bundle) {
             $bundle = new \ReflectionClass($bundle);
-            $path = dirname($bundle->getFileName()) . Configuration::DATATABLES_CONFIG_PATH;
+            $path = dirname($bundle->getFileName()) . Configuration::PATH_CONFIG;
 
             if (!is_dir($path)) {
                 continue;
@@ -54,7 +54,7 @@ class DatatablesExtension extends Extension
 
             $loader = new Loader\YamlFileLoader($container, new FileLocator($path));
 
-            foreach (glob($path . '/*' . Configuration::DATATABLES_CONFIG_SUFFIX) as $file) {
+            foreach (glob($path . '/*' . Configuration::SUFFIX_CONFIG) as $file) {
                 $loader->load($file);
             }
         }
