@@ -13,6 +13,16 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     const ROOT_NODE = 'phpro_datatables';
+    const DATATABLES_CONFIG_PATH   = '/Resources/config/datatables';
+    const DATATABLES_CONFIG_SUFFIX = '.datatable.yml';
+    const PATH_FACTORY   = '/Datatables/Factory';
+    const PATH_EXTRACTOR = '/Datatables/DataExtractor';
+    const PATH_CONFIG    = '/Resources/config/datatables';
+    const SUFFIX_FACTORY   = 'DatatableFactory.php';
+    const SUFFIX_EXTRACTOR = 'DataExtractor.php';
+    const SUFFIX_CONFIG    = '.datatable.yml';
+    const NAMESPACE_FACTORY   = '%s\Datatables\Factory\%sDatatableFactory';
+    const NAMESPACE_EXTRACTOR = '%s\Datatables\DataExtractor\%sDataExtractor';
 
     /**
      * {@inheritdoc}
@@ -22,12 +32,10 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root(self::ROOT_NODE);
 
-        $rootNode
-            ->children()
-                ->scalarNode('table_template')
-                ->defaultValue('DatatablesBundle:Datatables:default_table.html.twig')
-            ->end()
-        ;
+        $rootNode->children()
+            ->scalarNode('table_template')
+            ->defaultValue('DatatablesBundle:Datatables:default_table.html.twig')
+            ->end();
 
         return $treeBuilder;
     }

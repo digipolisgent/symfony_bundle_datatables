@@ -1,6 +1,7 @@
 <?php
 namespace Phpro\DatatablesBundle\Command;
 
+use Phpro\DatatablesBundle\DependencyInjection\Configuration;
 use Phpro\DatatablesBundle\Exception\InvalidArgumentException;
 use Phpro\DatatablesBundle\Exception\RuntimeException;
 use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
@@ -27,17 +28,6 @@ class GenerateTableCommand extends ContainerAwareCommand
      * @var array
      */
     private $columnConfig = [];
-
-    const PATH_FACTORY     = '/Datatables/Factory';
-    const PATH_EXTRACTOR   = '/Datatables/DataExtractor';
-    const PATH_CONFIG      = '/Resources/config/Datatables';
-
-    const SUFFIX_FACTORY   = 'DatatableFactory.php';
-    const SUFFIX_EXTRACTOR = 'DataExtractor.php';
-    const SUFFIX_CONFIG    = '.datatable.yml';
-
-    const NAMESPACE_FACTORY = '%s\Datatables\Factory\%sDatatableFactory';
-    const NAMESPACE_EXTRACTOR = '%s\Datatables\DataExtractor\%sDataExtractor';
 
     protected function configure()
     {
@@ -84,9 +74,9 @@ class GenerateTableCommand extends ContainerAwareCommand
             throw new InvalidArgumentException("Bundle $bundleName was not found in this project.");
         }
 
-        $factoryPath = $bundle->getPath() . self::PATH_FACTORY;
-        $extractorPath = $bundle->getPath() . self::PATH_EXTRACTOR;
-        $configPath = $bundle->getPath() . self::PATH_CONFIG;
+        $factoryPath = $bundle->getPath() . Configuration::PATH_FACTORY;
+        $extractorPath = $bundle->getPath() . Configuration::PATH_EXTRACTOR;
+        $configPath = $bundle->getPath() . Configuration::PATH_CONFIG;
 
         if (!@mkdir($factoryPath, 0777, true) && !is_dir($factoryPath)) {
             throw new RuntimeException('Could not create directory ' . $factoryPath);
@@ -100,9 +90,9 @@ class GenerateTableCommand extends ContainerAwareCommand
             throw new RuntimeException('Could not create directory ' . $configPath);
         }
 
-        $factoryFile = $factoryPath . '/' . ucfirst($tableName) . self::SUFFIX_FACTORY;
-        $extractorFile = $extractorPath . '/' . ucfirst($tableName) . self::SUFFIX_EXTRACTOR;
-        $configFile = $configPath . '/' . strtolower($tableName) . self::SUFFIX_CONFIG;
+        $factoryFile = $factoryPath . '/' . ucfirst($tableName) . Configuration::SUFFIX_FACTORY;
+        $extractorFile = $extractorPath . '/' . ucfirst($tableName) . Configuration::SUFFIX_EXTRACTOR;
+        $configFile = $configPath . '/' . strtolower($tableName) . Configuration::SUFFIX_CONFIG;
 
         if (file_exists($factoryFile) || file_exists($extractorFile) || file_exists($configFile)) {
             throw new RuntimeException('Factory and/or extractor for ' . $tableName . ' already exists');
@@ -142,8 +132,8 @@ class GenerateTableCommand extends ContainerAwareCommand
         $configContent = $renderer->render('DatatablesBundle:templates:table-config.yml.twig', [
             'bundle' =>  $bundleConfigName = str_replace('bundle', '', strtolower($bundleName)),
             'name'   => strtolower($tableName),
-            'class_extractor' => sprintf(self::NAMESPACE_EXTRACTOR, ucfirst($bundleName), ucfirst($tableName)),
-            'class_factory'   => sprintf(self::NAMESPACE_FACTORY, ucfirst($bundleName), ucfirst($tableName)),
+            'class_extractor' => sprintf(Configuration::NAMESPACE_EXTRACTOR, ucfirst($bundleName), ucfirst($tableName)),
+            'class_factory'   => sprintf(Configuration::NAMESPACE_FACTORY, ucfirst($bundleName), ucfirst($tableName)),
         ]);
 
         file_put_contents($configFile, $configContent);
