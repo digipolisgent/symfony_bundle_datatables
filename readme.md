@@ -1,10 +1,10 @@
-#PHPro Datatables
+#Avdb Datatables
 
 ## Installing this bundle :
 
 #### 1. Composer Require
 ```sh
-$php composer require phpro/datatables
+$php composer require avdb/datatables
 ```
 
 #### 2. Enable the bundle
@@ -15,7 +15,7 @@ public function registerBundles()
 {
     $bundles = [
         // other bundles
-        new Phpro\DatatablesBundle\DatatablesBundle(),
+        new Avdb\DatatablesBundle\DatatablesBundle(),
     ];
 }
 ```
@@ -129,7 +129,7 @@ services:
         arguments:
             - '@app.datatable.extractor.product'
         tags:
-            - {name: 'phpro_datatables.table'}
+            - {name: 'avdb_datatables.table'}
 
 ```
 

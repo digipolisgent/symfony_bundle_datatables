@@ -5,16 +5,16 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="PhproDatatablesBundle Test Suite">
-            <directory>src/Phpro/DatatablesBundle/Tests</directory>
+        <testsuite name="AvdbDatatablesBundle Test Suite">
+            <directory>src/Avdb/DatatablesBundle/Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src/Phpro/DatatablesBundle/</directory>
+            <directory suffix=".php">src/Avdb/DatatablesBundle/</directory>
             <exclude>
-                <directory>src/Phpro/DatatablesBundle/Tests</directory>
+                <directory>src/Avdb/DatatablesBundle/Tests</directory>
             </exclude>
         </whitelist>
     </filter>

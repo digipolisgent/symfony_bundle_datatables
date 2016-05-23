@@ -1,0 +1,21 @@
+services:
+    # Controller
+    avdb_datatables.controller:
+        class: Avdb\DatatablesBundle\Controller\DataController
+        arguments:
+            - '@avdb_datatables.manager'
+
+    # Manager
+    avdb_datatables.manager:
+        class: Avdb\DatatablesBundle\Manager\DatatableManager
+
+
+    # Twig
+    avdb_datatables.twig_extension:
+        class: Avdb\DatatablesBundle\Twig\DatatablesExtension
+        arguments:
+            - '@translator'
+            - '@router'
+            - { template: '%avdb_datatables.table_template%' }
+        tags:
+            - { name: 'twig.extension' }
