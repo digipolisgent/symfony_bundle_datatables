@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Manager;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -34,7 +33,7 @@ class DatatableManager implements DatatableManagerInterface
      * @param $alias
      * @return bool
      */
-    public function has($alias) : bool
+    public function has($alias)
     {
         return $this->datatables->get($alias) instanceof DatatableInterface;
     }
@@ -46,7 +45,7 @@ class DatatableManager implements DatatableManagerInterface
      * @return DatatableInterface
      * @throws DatatableNotFoundException
      */
-    public function get($alias) : DatatableInterface
+    public function get($alias)
     {
         if (true !== $this->has($alias)) {
             throw DatatableNotFoundException::fromAlias($alias);

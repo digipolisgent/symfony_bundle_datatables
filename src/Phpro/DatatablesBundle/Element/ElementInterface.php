@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace Phpro\DatatablesBundle\Element;
 
 interface ElementInterface
@@ -17,5 +16,5 @@ interface ElementInterface
      * @param array $options
      * @return string
      */
-    public static function generate(array $options = []) : string;
+    public static function generate(array $options = []);
 }

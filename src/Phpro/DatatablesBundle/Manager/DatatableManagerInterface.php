@@ -19,7 +19,7 @@ interface DatatableManagerInterface
      * @param $alias
      * @return bool
      */
-    public function has($alias) : bool;
+    public function has($alias);
 
     /**
      * Returns the Datatable registered with the given alias
@@ -28,7 +28,7 @@ interface DatatableManagerInterface
      * @return DatatableInterface
      * @throws DatatableNotFoundException
      */
-    public function get($alias) : DatatableInterface;
+    public function get($alias);
 
     /**
      * Registers a datatable under its current alias

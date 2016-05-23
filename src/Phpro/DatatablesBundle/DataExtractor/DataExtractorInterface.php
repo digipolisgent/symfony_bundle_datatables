@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\DataExtractor;
 
 use Phpro\DatatablesBundle\Request\RequestInterface;
@@ -11,5 +10,9 @@ use Phpro\DatatablesBundle\Request\RequestInterface;
  */
 interface DataExtractorInterface
 {
-    public function extract(RequestInterface $request) : ExtractionInterface;
+    /**
+     * @param RequestInterface $request
+     * @return ExtractionInterface
+     */
+    public function extract(RequestInterface $request);
 }

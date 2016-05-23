@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Datatable;
 
 use Phpro\DatatablesBundle\Column\ColumnInterface;
@@ -20,7 +19,7 @@ interface DatatableInterface
      * @param RequestInterface $request
      * @return Response
      */
-    public function buildResponse(RequestInterface $request) : Response;
+    public function buildResponse(RequestInterface $request);
 
     /**
      * Adds a Column element to the DataTable's columns
@@ -28,7 +27,7 @@ interface DatatableInterface
      * @param ColumnInterface $column
      * @return DataTableInterface
      */
-    public function addColumn(ColumnInterface $column) : DatatableInterface;
+    public function addColumn(ColumnInterface $column);
 
     /**
      * Creates a Column element and adds it tho the DataTable's columns
@@ -37,19 +36,19 @@ interface DatatableInterface
      * @param array $options
      * @return DataTableInterface
      */
-    public function createColumn(string $name, array $options = []) : DatatableInterface;
+    public function createColumn($name, array $options = []);
 
     /**
      * Returns all columns that are present in the table
      *
      * @return array|ColumnInterface[]
      */
-    public function getColumns() : array;
+    public function getColumns();
 
     /**
      * Returns the alias of the table for which it is registered in the manager
      *
      * @return string
      */
-    public function getAlias() : string;
+    public function getAlias();
 }

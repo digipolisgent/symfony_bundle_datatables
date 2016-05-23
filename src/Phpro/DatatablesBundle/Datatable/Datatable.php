@@ -1,10 +1,11 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Datatable;
 
 use Phpro\DatatablesBundle\Column\Column;
 use Phpro\DatatablesBundle\Column\ColumnInterface;
 use Phpro\DatatablesBundle\DataExtractor\DataExtractorInterface;
+use Phpro\DatatablesBundle\DataExtractor\ExtractionInterface;
+use Phpro\DatatablesBundle\Exception\RuntimeException;
 use Phpro\DatatablesBundle\Request\RequestInterface;
 use Phpro\DatatablesBundle\Response\Response;
 
@@ -49,10 +50,18 @@ class Datatable implements DatatableInterface
      *
      * @param RequestInterface $request
      * @return Response
+     * @throws RuntimeException
      */
-    public function buildResponse(RequestInterface $request) : Response
+    public function buildResponse(RequestInterface $request)
     {
         $result = $this->extractor->extract($request);
+
+        if(!$result instanceof ExtractionInterface) {
+            throw new RuntimeException(
+                'Expected instanceof ExtractionInterface from DataExtractor  (' . get_class($this->extractor) . ').'
+            );
+        }
+
         $data = [];
 
         foreach ($result->getData() as $target) {
@@ -72,7 +81,7 @@ class Datatable implements DatatableInterface
      * @param ColumnInterface $column
      * @return DataTableInterface
      */
-    public function addColumn(ColumnInterface $column) : DatatableInterface
+    public function addColumn(ColumnInterface $column)
     {
         $this->columns[$column->getName()] = $column;
         return $this;
@@ -85,7 +94,7 @@ class Datatable implements DatatableInterface
      * @param array $options
      * @return DataTableInterface
      */
-    public function createColumn(string $name, array $options = []) : DatatableInterface
+    public function createColumn($name, array $options = [])
     {
         return $this->addColumn(new Column($name, $options));
     }
@@ -95,7 +104,7 @@ class Datatable implements DatatableInterface
      *
      * @return array|ColumnInterface[]
      */
-    public function getColumns() : array
+    public function getColumns()
     {
         return $this->columns;
     }
@@ -105,7 +114,7 @@ class Datatable implements DatatableInterface
      *
      * @return string
      */
-    public function getAlias() : string
+    public function getAlias()
     {
         return $this->alias;
     }

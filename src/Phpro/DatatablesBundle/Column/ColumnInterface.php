@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Column;
 
 /**
@@ -15,26 +14,26 @@ interface ColumnInterface
      * @param mixed $target
      * @return string
      */
-    public function extractValue($target) : string;
+    public function extractValue($target);
 
     /**
      * Returns the column name
      *
      * @return string
      */
-    public function getName() : string;
+    public function getName();
 
     /**
      * Returns the column label
      *
      * @return string
      */
-    public function getLabel() : string;
+    public function getLabel();
 
     /**
      * Returns all options
      * 
      * @return array
      */
-    public function getOptions() : array;
+    public function getOptions();
 }

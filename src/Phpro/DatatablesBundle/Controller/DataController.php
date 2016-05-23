@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Controller;
 
 use Phpro\DatatablesBundle\Manager\DatatableManagerInterface;
@@ -37,7 +36,7 @@ class DataController
      * @param $alias
      * @return Response
      */
-    public function dataAction(HttpRequest $request, $alias) : Response
+    public function dataAction(HttpRequest $request, $alias)
     {
         $table = $this->manager->get($alias);
 

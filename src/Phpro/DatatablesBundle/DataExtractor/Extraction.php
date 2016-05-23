@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\DataExtractor;
 
 /**
@@ -30,10 +29,10 @@ class Extraction implements ExtractionInterface
      * @param array $data
      * @param int $totalRecords
      */
-    public function __construct(array $data, int $totalRecords)
+    public function __construct(array $data, $totalRecords)
     {
-        $this->data = $data;
-        $this->totalRecords = $totalRecords;
+        $this->data = (array) $data;
+        $this->totalRecords = (int) $totalRecords;
     }
 
     /**
@@ -47,7 +46,7 @@ class Extraction implements ExtractionInterface
     /**
      * @return int
      */
-    public function getTotalRecords() : int
+    public function getTotalRecords()
     {
         return $this->totalRecords;
     }

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 namespace Phpro\DatatablesBundle\Element;
 
 /**
@@ -35,7 +34,7 @@ class Label implements ElementInterface
      * @param array $options
      * @return string
      */
-    public static function generate(array $options = []) : string
+    public static function generate(array $options = [])
     {
         $options = array_merge(self::$defaultOptions, $options);
 

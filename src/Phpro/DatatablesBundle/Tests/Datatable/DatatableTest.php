@@ -8,6 +8,7 @@ use Phpro\DatatablesBundle\DataExtractor\DataExtractorInterface;
 use Phpro\DatatablesBundle\DataExtractor\Extraction;
 use Phpro\DatatablesBundle\Datatable\Datatable;
 use Phpro\DatatablesBundle\Datatable\DatatableInterface;
+use Phpro\DatatablesBundle\Exception\RuntimeException;
 use Phpro\DatatablesBundle\Request\RequestInterface;
 use Phpro\DatatablesBundle\Response\Response;
 use Phpro\DatatablesBundle\Tests\DatatablesTestCase;
@@ -48,6 +49,20 @@ class DatatableTest extends DatatablesTestCase
         $table->createColumn('name');
 
         $this->assertInstancesOf(ColumnInterface::class, $table->getColumns());
+    }
+    
+    public function testShouldThrowExceptionWhenNoExtractionIsReturned()
+    {
+        $request   = $this->getMock(RequestInterface::class);
+        $extractor = $this->getMock(DataExtractorInterface::class);
+        $extractor
+            ->method('extract')
+            ->with($request)
+            ->willReturn(['something-wong']);
+        
+        $this->expectException(RuntimeException::class);
+        $table = new Datatable('test', $extractor);
+        $table->buildResponse($request);
     }
 
     public function testBuildResponse()

@@ -40,7 +40,7 @@ class Request implements RequestInterface
     /**
      * @return HttpRequest
      */
-    public function getHttpRequest() : HttpRequest
+    public function getHttpRequest()
     {
         return $this->request;
     }
@@ -50,7 +50,7 @@ class Request implements RequestInterface
      *
      * @return integer
      */
-    public function getPageSize() : int
+    public function getPageSize()
     {
         return (int)$this->request->query->get('length', $this->defaults['page_size']);
     }
@@ -60,7 +60,7 @@ class Request implements RequestInterface
      *
      * @return int
      */
-    public function getPage() : int
+    public function getPage()
     {
         $offset = $this->request->query->get('start', 0);
         $size = $this->getPageSize();
@@ -73,7 +73,7 @@ class Request implements RequestInterface
      * 
      * @return int
      */
-    public function getOffset() : int
+    public function getOffset()
     {
         return $this->request->query->get('start', 0);
     }
@@ -83,7 +83,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function getSort() : string
+    public function getSort()
     {
         $columnIndex = $this->request->query->get('order', [])[0]['column'] ?? false;
         $sort = $this->defaults['sort'];
@@ -107,7 +107,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function getOrder() : string
+    public function getOrder()
     {
         return (string)($this->request->query->get('order', [])[0]['dir'] ?? $this->defaults['order']);
     }
@@ -117,7 +117,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function getSearch() : string
+    public function getSearch()
     {
         return (string)($this->request->query->get('search', [])['value'] ?? null);
     }
@@ -125,7 +125,7 @@ class Request implements RequestInterface
     /**
      * @return int
      */
-    public function getDraw() : int
+    public function getDraw()
     {
         return (int)$this->request->query->get('draw', 0);
     }

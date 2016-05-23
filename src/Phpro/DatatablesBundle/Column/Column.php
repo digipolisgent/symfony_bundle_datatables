@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Column;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,10 +24,10 @@ class Column implements ColumnInterface
     /**
      * Column constructor.
      *
-     * @param $name
+     * @param string $name
      * @param array $options
      */
-    public function __construct(string $name, array $options = [])
+    public function __construct($name, array $options = [])
     {
         $this->options  = $options; // options need to be accessible by the resolver to check if property is passed
         $this->name     = $name;
@@ -40,7 +39,7 @@ class Column implements ColumnInterface
      *
      * @return OptionsResolver
      */
-    protected function optionsResolver() : OptionsResolver
+    protected function optionsResolver()
     {
         $resolver = new OptionsResolver();
         $resolver->setDefaults([
@@ -67,17 +66,17 @@ class Column implements ColumnInterface
      * @return string
      * @throws \Phpro\DatatablesBundle\Exception\InvalidArgumentException
      */
-    public function extractValue($target) : string
+    public function extractValue($target)
     {
         /** @var callable $extractor */
         $extractor = $this->getOption('extractor');
-        return (string) $extractor($target);
+        return $extractor($target);
     }
 
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName()
     {
         return $this->name;
     }
@@ -85,7 +84,7 @@ class Column implements ColumnInterface
     /**
      * @return string
      */
-    public function getLabel() : string
+    public function getLabel()
     {
         return $this->getOption('label', ucfirst($this->name));
     }
@@ -93,17 +92,17 @@ class Column implements ColumnInterface
     /**
      * @return array
      */
-    public function getOptions() : array
+    public function getOptions()
     {
         return $this->options;
     }
 
     /**
-     * @param $name
-     * @param null $default
+     * @param string $name
+     * @param mixed $default
      * @return mixed
      */
-    public function getOption(string $name, $default = null)
+    public function getOption($name, $default = null)
     {
         if (!array_key_exists($name, $this->options)) {
             return $default;
@@ -116,7 +115,7 @@ class Column implements ColumnInterface
      * @param string $name
      * @param $value
      */
-    public function setAttribute(string $name, string $value)
+    public function setAttribute($name, $value)
     {
         $this->options['attributes'][$name] = $value;
     }

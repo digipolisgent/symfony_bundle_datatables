@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Twig;
 
 use Phpro\DatatablesBundle\Column\ColumnInterface;
@@ -51,7 +50,7 @@ class DatatablesExtension extends \Twig_Extension
     /**
      * @return array
      */
-    public function getFunctions() : array
+    public function getFunctions()
     {
         return [
             'render_table'  => new \Twig_SimpleFunction('datatables_render_table', [$this, 'renderTable'], [
@@ -74,8 +73,9 @@ class DatatablesExtension extends \Twig_Extension
     public function renderColumn(ColumnInterface $column)
     {
         $attributes = [];
+        $columnAttributes = isset($column->getOptions()['attributes']) ? $column->getOptions()['attributes'] : [];
 
-        foreach ($column->getOptions()['attributes'] ?? [] as $attribute => $value) {
+        foreach ($columnAttributes as $attribute => $value) {
             $attributes[] = "$attribute=\"$value\"";
         }
 

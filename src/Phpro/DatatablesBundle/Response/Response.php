@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Response;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,7 +10,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class Response extends JsonResponse
 {
-    public function __construct(array $data, int $totalRecords, int $draw)
+    /**
+     * Response constructor.
+     *
+     * @param array $data
+     * @param integer $totalRecords
+     * @param integer $draw
+     */
+    public function __construct(array $data, $totalRecords, $draw)
     {
         parent::__construct([
             'data'              => $data,

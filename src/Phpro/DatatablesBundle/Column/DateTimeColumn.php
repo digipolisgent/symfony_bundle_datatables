@@ -25,7 +25,7 @@ class DateTimeColumn extends Column
      *
      * @return OptionsResolver
      */
-    protected function optionsResolver() : OptionsResolver
+    protected function optionsResolver()
     {
         $resolver = parent::optionsResolver();
         $resolver->setDefault('allow_null', true);
@@ -44,7 +44,7 @@ class DateTimeColumn extends Column
      * @return string
      * @throws RuntimeException
      */
-    public function extractValue($target) : string
+    public function extractValue($target)
     {
         /** @var callable $extractor */
         $extractor = $this->options['extractor'];

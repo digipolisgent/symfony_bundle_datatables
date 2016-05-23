@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\DataExtractor;
 
 /**
@@ -13,10 +12,10 @@ interface ExtractionInterface
     /**
      * @return array
      */
-    public function getData() : array;
+    public function getData();
 
     /**
      * @return int
      */
-    public function getTotalRecords() : int;
+    public function getTotalRecords();
 }

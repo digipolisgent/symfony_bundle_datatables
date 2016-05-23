@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Phpro\DatatablesBundle\Exception;
 
 /**
@@ -9,8 +8,16 @@ namespace Phpro\DatatablesBundle\Exception;
  */
 class DatatableNotFoundException extends DatatablesException
 {
-    public static function fromAlias($alias) : DatatableNotFoundException
+    /**
+     * Creates a new DatatableNotFoundException from an alias
+     *
+     * @param $alias
+     * @return DatatableNotFoundException
+     */
+    public static function fromAlias($alias)
     {
-        return new static("Datatable $alias was not registered as a datatable, did you forget to tag the datatable ?");
+        return new static(
+            "Datatable $alias was not registered as a datatable, did you forget to tag the datatable ?"
+        );
     }
 }
