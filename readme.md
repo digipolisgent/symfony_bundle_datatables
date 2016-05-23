@@ -4,7 +4,7 @@
 
 #### 1. Composer Require
 ```sh
-$php composer require avdb/datatables
+$php composer require avdb/datatables-bundle
 ```
 
 #### 2. Enable the bundle
@@ -124,7 +124,7 @@ services:
 
     #  Table
     app.datatable.table.product:
-        class: phpro\DatatablesBundle\Datatable\Datatable
+        class: Avdb\DatatablesBundle\Datatable\Datatable
         factory: [App\AppBundle\Factory\ProductTableFactory, 'create]
         arguments:
             - '@app.datatable.extractor.product'

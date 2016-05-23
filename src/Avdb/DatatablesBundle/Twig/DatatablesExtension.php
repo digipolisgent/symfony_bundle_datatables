@@ -99,7 +99,7 @@ class DatatablesExtension extends \Twig_Extension
         return $twig->render($options['template'], [
             'table'   => $table,
             'options' => $options,
-            'uri'     => $this->router->generate('phpro_datatables.data_api', ['alias' => $table->getAlias()])
+            'uri'     => $this->router->generate('avdb_datatables.data_api', ['alias' => $table->getAlias()])
         ]);
     }
 
@@ -108,6 +108,6 @@ class DatatablesExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'phpro_datatables';
+        return 'avdb_datatables';
     }
 }

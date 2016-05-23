@@ -28,7 +28,7 @@ gulp.task('scripts', function () {
         .pipe(gulp.dest('./assets-src/scripts/'))
         .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
-        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/js/'));
+        .pipe(gulp.dest('./src/Avdb/DatatablesBundle/Resources/public/js/'));
 });
 
 gulp.task('scripts-bootstrap', function () {
@@ -37,7 +37,7 @@ gulp.task('scripts-bootstrap', function () {
         .pipe(gulp.dest('./assets-src/scripts/'))
         .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
-        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/js/'));
+        .pipe(gulp.dest('./src/Avdb/DatatablesBundle/Resources/public/js/'));
 });
 
 
@@ -47,7 +47,7 @@ gulp.task('sass-bootstrap', function(done){
         .pipe(concat('datatables-bootstrap.css'))
         .pipe(cleanCss())
         .pipe(rename({extname: '.min.css'}))
-        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/css/'))
+        .pipe(gulp.dest('./src/Avdb/DatatablesBundle/Resources/public/css/'))
         .on('end', done)
 });
 
@@ -57,7 +57,7 @@ gulp.task('sass-font-awesome', function(done){
         .pipe(concat('datatables-font-awesome.css'))
         .pipe(cleanCss())
         .pipe(rename({extname: '.min.css'}))
-        .pipe(gulp.dest('./src/Phpro/DatatablesBundle/Resources/public/css/'))
+        .pipe(gulp.dest('./src/Avdb/DatatablesBundle/Resources/public/css/'))
         .on('end', done)
 });
 

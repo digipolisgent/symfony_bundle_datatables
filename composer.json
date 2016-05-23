@@ -1,5 +1,5 @@
 {
-    "name": "avdb/datatables",
+    "name": "avdb/datatables-bundle",
     "description": "Datatables.net integration into Symfony2",
     "keywords": ["Datatables", "DataTables.net", "Symfony", "District01"],
     "type": "library",
