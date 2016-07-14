@@ -47,6 +47,10 @@ class PropertyExtractor
      */
     public function __invoke($target)
     {
-        return $this->accessor->getValue($target, $this->property);
+        if ($this->accessor->isReadable($target, $this->property)) {
+            return $this->accessor->getValue($target, $this->property);
+        }
+
+        return null;
     }
 }
