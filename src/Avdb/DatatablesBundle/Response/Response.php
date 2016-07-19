@@ -22,7 +22,7 @@ class Response extends JsonResponse
         parent::__construct([
             'data'              => $data,
             'draw'              => $draw,
-            'recordsFiltered'   => count($data),
+            'recordsFiltered'   => $totalRecords,
             'recordsTotal'      => $totalRecords
         ], 200, []);
     }
