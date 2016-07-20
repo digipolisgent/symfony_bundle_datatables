@@ -1,11 +1,10 @@
 <?php
-namespace {{bundle}}\Datatables\DataExtractor;
+namespace {{namespace}}\Datatables\DataExtractor;
 
-use Avdb\DatatablesBundle\DataExtractor\ExtractionInterface;
 use Avdb\DatatablesBundle\Request\RequestInterface;
 use Avdb\DatatablesBundle\DataExtractor\DataExtractorInterface;
 
-class {{ucName}}DataExtractor implements DataExtractorInterface
+class {{table|capitalize}}DataExtractor implements DataExtractorInterface
 {
     public function extract(RequestInterface $request)
     {

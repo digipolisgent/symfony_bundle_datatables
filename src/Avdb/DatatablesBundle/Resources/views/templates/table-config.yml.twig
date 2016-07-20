@@ -1,5 +1,5 @@
-{% set extractor_service = bundle ~ '.datatables.extractor.' ~ name %}
-{% set datatable_service = bundle ~ '.datatables.table.' ~ name %}
+{% set extractor_service = bundle ~ '.datatables.extractor.' ~ (table|lower) %}
+{% set datatable_service = bundle ~ '.datatables.table.' ~ (table|lower) %}
 services:
     {{ extractor_service }}:
         class: {{ class_extractor }}

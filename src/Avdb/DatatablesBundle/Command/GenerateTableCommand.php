@@ -4,12 +4,10 @@ namespace Avdb\DatatablesBundle\Command;
 use Avdb\DatatablesBundle\DependencyInjection\Configuration;
 use Avdb\DatatablesBundle\Exception\InvalidArgumentException;
 use Avdb\DatatablesBundle\Exception\RuntimeException;
-use Sensio\Bundle\GeneratorBundle\Command\Helper\QuestionHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
@@ -76,30 +74,18 @@ class GenerateTableCommand extends ContainerAwareCommand
             );
         }
 
-        $bundleName = explode(':', $name)[0];
-        $tableName = explode(':', $name)[1];
+        list($bundleName, $tableName) = explode(':', $name);
 
         $bundle = $application->getKernel()->getBundle($bundleName);
-
         if (!$bundle instanceof BundleInterface) {
             throw new InvalidArgumentException("Bundle $bundleName was not found in this project.");
         }
 
+        $bundleNamespace = $bundle->getNamespace();
+        $bundleConfigName = $this->bundleNamespaceToPrefix($bundleNamespace);
         $factoryPath = $bundle->getPath() . Configuration::PATH_FACTORY;
         $extractorPath = $bundle->getPath() . Configuration::PATH_EXTRACTOR;
         $configPath = $bundle->getPath() . Configuration::PATH_CONFIG;
-
-        if (!@mkdir($factoryPath, 0777, true) && !is_dir($factoryPath)) {
-            throw new RuntimeException('Could not create directory ' . $factoryPath);
-        }
-
-        if (!@mkdir($extractorPath, 0777, true) && !is_dir($extractorPath)) {
-            throw new RuntimeException('Could not create directory ' . $extractorPath);
-        }
-
-        if (!@mkdir($configPath, 0777, true) && !is_dir($configPath)) {
-            throw new RuntimeException('Could not create directory ' . $configPath);
-        }
 
         $factoryFile = $factoryPath . '/' . ucfirst($tableName) . Configuration::SUFFIX_FACTORY;
         $extractorFile = $extractorPath . '/' . ucfirst($tableName) . Configuration::SUFFIX_EXTRACTOR;
@@ -124,29 +110,32 @@ class GenerateTableCommand extends ContainerAwareCommand
         }
 
         $factoryContent = $renderer->render('DatatablesBundle:templates:factory.php.twig', [
-            'bundle'  => ucfirst($bundleName),
-            'ucName'  => ucfirst($tableName),
-            'lcName'  => strtolower($tableName),
+            'namespace'  => $bundleNamespace,
+            'bundle'  => $bundleName,
+            'table'  => $tableName,
             'columns' => $columns,
         ]);
 
-        file_put_contents($factoryFile, $factoryContent);
 
         $extractorContent = $renderer->render('DatatablesBundle:templates:extractor.php.twig', [
-            'bundle' => ucfirst($bundleName),
-            'ucName' => ucfirst($tableName),
-            'lcName' => strtolower($tableName),
+            'namespace'  => $bundleNamespace,
+            'bundle' => $bundleName,
+            'table' => $tableName,
         ]);
-
-        file_put_contents($extractorFile, $extractorContent);
 
         $configContent = $renderer->render('DatatablesBundle:templates:table-config.yml.twig', [
-            'bundle' =>  $bundleConfigName = str_replace('bundle', '', strtolower($bundleName)),
-            'name'   => strtolower($tableName),
-            'class_extractor' => sprintf(Configuration::NAMESPACE_EXTRACTOR, ucfirst($bundleName), ucfirst($tableName)),
-            'class_factory'   => sprintf(Configuration::NAMESPACE_FACTORY, ucfirst($bundleName), ucfirst($tableName)),
+            'namespace'  => $bundleNamespace,
+            'bundle' =>  $bundleConfigName,
+            'table'   => $tableName,
+            'class_extractor' => sprintf(Configuration::NAMESPACE_EXTRACTOR, $bundleNamespace, ucfirst($tableName)),
+            'class_factory'   => sprintf(Configuration::NAMESPACE_FACTORY, $bundleNamespace, ucfirst($tableName)),
         ]);
 
+        $this->createDirectory($factoryPath);
+        $this->createDirectory($extractorPath);
+        $this->createDirectory($configPath);
+        file_put_contents($factoryFile, $factoryContent);
+        file_put_contents($extractorFile, $extractorContent);
         file_put_contents($configFile, $configContent);
     }
 
@@ -169,5 +158,30 @@ class GenerateTableCommand extends ContainerAwareCommand
         ];
 
         $this->askForColumns();
+    }
+
+    private function createDirectory($path)
+    {
+        if (!@mkdir($path, 0777, true) && !is_dir($path)) {
+            throw new RuntimeException('Could not create directory ' . $path);
+        }
+    }
+
+    /**
+     * @param string $namespace
+     * @return string
+     */
+    private function bundleNamespaceToPrefix($namespace)
+    {
+        $prefix = '';
+
+        foreach (explode('\\', $namespace) as $part) {
+            $part = preg_replace('/Bundle$/', '', $part);
+            if (strlen($part)) {
+                $prefix .= $part;
+            }
+        }
+
+        return strtolower(preg_replace('/(?!^)([A-Z])/', '_$1', $prefix));
     }
 }

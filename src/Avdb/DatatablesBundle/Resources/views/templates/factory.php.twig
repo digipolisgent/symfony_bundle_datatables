@@ -1,14 +1,14 @@
 <?php
-namespace {{bundle}}\Datatables\Factory;
+namespace {{namespace}}\Datatables\Factory;
 
 use Avdb\DatatablesBundle\DataExtractor\DataExtractorInterface;
 use Avdb\DatatablesBundle\Datatable\Datatable;
 
-class {{ucName}}DataTableFactory
+class {{table|capitalize}}DatatableFactory
 {
     public static function create(DataExtractorInterface $extractor)
     {
-        $table = new Datatable('{{lcName}}', $extractor);
+        $table = new Datatable('{{table|lower}}', $extractor);
 
         $table
 {{columns|raw}}
