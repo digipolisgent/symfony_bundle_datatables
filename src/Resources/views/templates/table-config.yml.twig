@@ -3,6 +3,10 @@
 services:
     {{ extractor_service }}:
         class: {{ class_extractor }}
+        {% if isDoctrineEntity -%}
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+        {% endif %}
 
     {{ datatable_service }}:
         class: Avdb\DatatablesBundle\Datatable\Datatable

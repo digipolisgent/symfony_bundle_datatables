@@ -3,11 +3,46 @@ namespace {{namespace}}\Datatables\DataExtractor;
 
 use Avdb\DatatablesBundle\Request\RequestInterface;
 use Avdb\DatatablesBundle\DataExtractor\DataExtractorInterface;
+use Avdb\DatatablesBundle\DataExtractor\Extraction;
+{% if isDoctrineEntity %}
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+{% endif %}
 
 class {{table|capitalize}}DataExtractor implements DataExtractorInterface
 {
+{% if isDoctrineEntity %}
+    /**
+     * @var EntityManager
+     */
+    protected $em;
+
+    /**
+     * @param $em
+     */
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+{% endif %}
     public function extract(RequestInterface $request)
     {
+{% if isDoctrineEntity %}
+        $query = $this->em->getRepository('{{ entityName }}')
+            ->createQueryBuilder('{{ table|lower }}')
+            ->getQuery()
+        ;
+        $query->setMaxResults($request->getPageSize());
+        $query->setFirstResult($request->getOffset());
+
+        $paginator = new Paginator($query);
+
+        return new Extraction(
+            $paginator->getIterator()->getArrayCopy(),
+            $paginator->count()
+        );{% else %}
         // TODO: Implement extract() method.
+{% endif %}
     }
 }

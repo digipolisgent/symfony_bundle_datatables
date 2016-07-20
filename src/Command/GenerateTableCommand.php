@@ -6,6 +6,7 @@ use Avdb\DatatablesBundle\Exception\InvalidArgumentException;
 use Avdb\DatatablesBundle\Exception\RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -30,6 +31,8 @@ class GenerateTableCommand extends ContainerAwareCommand
     {
         $this->setName('datatables:table:generate');
         $this->setAliases(['generate:datatables:table']);
+
+        $this->addArgument('name', InputArgument::OPTIONAL, 'table name. For example \'AppBundle:Window\'');
 
         $this->setDescription('Generates a table by command');
     }
@@ -63,18 +66,22 @@ class GenerateTableCommand extends ContainerAwareCommand
         /** @var Application $application */
         $application = $this->getApplication();
 
-        $this->io->text('Welcome to the Datatables generator');
-        $this->io->text('Specify the name of the table you wish to create. Specify as AppBundle:Window');
+        if (($entityName = $input->getArgument('name')) === null) {
+            $this->io->text('Welcome to the Datatables generator');
+            $this->io->text('Specify the name of the table you wish to create. Specify as AppBundle:Window');
 
-        $name = $this->io->ask('Provide table name. For example \'AppBundle:Window\'');
+            $entityName = $this->io->ask('Provide table name. For example \'AppBundle:Window\'');
+        }
 
-        if (count(explode(':', $name)) < 2) {
+        $isDoctrineEntity = $this->isEntityAlias($entityName);
+
+        if (count(explode(':', $entityName)) < 2) {
             throw new InvalidArgumentException(
-                "Table name $name is not a valid name, please include your bundle in the name, ie ; AppBundle:Name"
+                "Table name $entityName is not a valid name, please include your bundle in the name, ie ; AppBundle:Name"
             );
         }
 
-        list($bundleName, $tableName) = explode(':', $name);
+        list($bundleName, $tableName) = explode(':', $entityName);
 
         $bundle = $application->getKernel()->getBundle($bundleName);
         if (!$bundle instanceof BundleInterface) {
@@ -118,6 +125,8 @@ class GenerateTableCommand extends ContainerAwareCommand
 
 
         $extractorContent = $renderer->render('DatatablesBundle:templates:extractor.php.twig', [
+            'entityName' => $entityName,
+            'isDoctrineEntity' => $isDoctrineEntity,
             'namespace'  => $bundleNamespace,
             'bundle' => $bundleName,
             'table' => $tableName,
@@ -125,6 +134,7 @@ class GenerateTableCommand extends ContainerAwareCommand
 
         $configContent = $renderer->render('DatatablesBundle:templates:table-config.yml.twig', [
             'namespace'  => $bundleNamespace,
+            'isDoctrineEntity' => $isDoctrineEntity,
             'bundle' =>  $bundleConfigName,
             'table'   => $tableName,
             'class_extractor' => sprintf(Configuration::NAMESPACE_EXTRACTOR, $bundleNamespace, ucfirst($tableName)),
@@ -165,6 +175,16 @@ class GenerateTableCommand extends ContainerAwareCommand
         if (!@mkdir($path, 0777, true) && !is_dir($path)) {
             throw new RuntimeException('Could not create directory ' . $path);
         }
+    }
+
+    private function isEntityAlias($name)
+    {
+        try {
+            $this->getContainer()->get('doctrine.orm.default_entity_manager')->getClassMetadata($name);
+            return true;
+        } catch (\Exception $e) {}
+
+        return false;
     }
 
     /**
