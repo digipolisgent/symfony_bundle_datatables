@@ -27,5 +27,10 @@
         "psr-0": {
             "Avdb\\DatatablesBundle\\": "src"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0"
+        }
     }
 }
