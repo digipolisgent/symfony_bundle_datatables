@@ -93,10 +93,9 @@ class Request implements RequestInterface
         }
 
         $columns = $this->request->query->get('columns', []);
-        foreach ($columns as $i => $column) {
-            if ($i === $columnIndex && $column['orderable'] !== 'false') {
-                $sort = $column['name'];
-            }
+
+        if (isset($columns[$columnIndex]['name'])) {
+            $sort = $columns[$columnIndex]['name'];
         }
 
         return (string)$sort;
