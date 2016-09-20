@@ -14,7 +14,7 @@ class DataControllerTest extends DatatablesTestCase
     public function testIsInitializable()
     {
         /** @var DatatableManagerInterface $manager */
-        $manager = $this->getMock(DatatableManagerInterface::class);
+        $manager = $this->getMockObject(DatatableManagerInterface::class);
 
         $controller = new DataController($manager);
         $this->assertInstanceOf(DataController::class, $controller);
@@ -23,15 +23,15 @@ class DataControllerTest extends DatatablesTestCase
     public function testReturnsResponseWhenTableIsFound()
     {
         /** @var Request $request */
-        $request = $this->getMock(Request::class);
-        $table = $this->getMock(DatatableInterface::class);
+        $request = $this->getMockObject(Request::class);
+        $table = $this->getMockObject(DatatableInterface::class);
         $table
             ->method('buildResponse')
             ->willReturn(new Response([], 10, 1));
 
         /** @var DatatableInterface $table */
 
-        $manager = $this->getMock(DatatableManagerInterface::class);
+        $manager = $this->getMockObject(DatatableManagerInterface::class);
         $manager
             ->method('has')
             ->willReturn(true);

@@ -18,7 +18,7 @@ class DatatableTest extends DatatablesTestCase
 {
     public function testIsInitializable()
     {
-        $extractor = $this->getMock(DataExtractorInterface::class);
+        $extractor = $this->getMockObject(DataExtractorInterface::class);
         $table = new Datatable('test', $extractor);
         $this->assertInstanceOf(DatatableInterface::class, $table);
         $this->assertEquals('test', $table->getAlias());
@@ -26,7 +26,7 @@ class DatatableTest extends DatatablesTestCase
 
     public function testCanAddColumns()
     {
-        $extractor = $this->getMock(DataExtractorInterface::class);
+        $extractor = $this->getMockObject(DataExtractorInterface::class);
         $table = new Datatable('test', $extractor);
 
         $this->assertTrue(is_array($table->getColumns()));
@@ -39,7 +39,7 @@ class DatatableTest extends DatatablesTestCase
 
     public function testCanCreateColumns()
     {
-        $extractor = $this->getMock(DataExtractorInterface::class);
+        $extractor = $this->getMockObject(DataExtractorInterface::class);
         $table = new Datatable('test', $extractor);
 
         $this->assertTrue(is_array($table->getColumns()));
@@ -53,8 +53,8 @@ class DatatableTest extends DatatablesTestCase
     
     public function testShouldThrowExceptionWhenNoExtractionIsReturned()
     {
-        $request   = $this->getMock(RequestInterface::class);
-        $extractor = $this->getMock(DataExtractorInterface::class);
+        $request   = $this->getMockObject(RequestInterface::class);
+        $extractor = $this->getMockObject(DataExtractorInterface::class);
         $extractor
             ->method('extract')
             ->with($request)
@@ -67,9 +67,9 @@ class DatatableTest extends DatatablesTestCase
 
     public function testBuildResponse()
     {
-        $extractor = $this->getMock(DataExtractorInterface::class);
-        $column    = $this->getMock(ColumnInterface::class);
-        $request   = $this->getMock(RequestInterface::class);
+        $extractor = $this->getMockObject(DataExtractorInterface::class);
+        $column    = $this->getMockObject(ColumnInterface::class);
+        $request   = $this->getMockObject(RequestInterface::class);
 
         $extractor
             ->method('extract')

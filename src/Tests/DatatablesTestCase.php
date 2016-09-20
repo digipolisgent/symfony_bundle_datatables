@@ -24,6 +24,18 @@ abstract class DatatablesTestCase extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $class
+     * @return mixed|\PHPUnit_Framework_MockObject_MockObject
+     */
+    public function getMockObject($class)
+    {
+        $mocker = $this->getMockBuilder($class);
+        $mocker->disableOriginalConstructor();
+
+        return $mocker->getMock();
+    }
+
+    /**
      * Mocks a DatatableObject with a specific alias
      *
      * @param $alias
@@ -31,7 +43,7 @@ abstract class DatatablesTestCase extends \PHPUnit_Framework_TestCase
      */
     public function mockTable($alias)
     {
-        $table = $this->getMock(DatatableInterface::class);
+        $table = $this->getMockObject(DatatableInterface::class);
 
         $table
             ->method('getAlias')
