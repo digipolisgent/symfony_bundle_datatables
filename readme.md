@@ -27,14 +27,6 @@ datatables:
     resource: "@DatatablesBundle/Resources/config/routing.yml"
 ```
 
-Add the bundle's css to your application in your layout.html.twig file
-```twig
-    {% block stylesheets %}
-        <!--- Other stylesheets -->
-        <link rel="stylesheet" href="{{ asset('bundles/datatables/css/datatables.min.css') }}">
-    {% endblock %}
-```
-
 Add the bundle's javascript to your application in your layout.html.twig file :
 ```twig
 {% block javascripts %}
