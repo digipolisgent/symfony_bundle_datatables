@@ -125,7 +125,7 @@ services:
     #  Table
     app.datatable.table.product:
         class: Avdb\DatatablesBundle\Datatable\Datatable
-        factory: [App\AppBundle\Factory\ProductTableFactory, 'create]
+        factory: [App\AppBundle\Factory\ProductTableFactory, 'create']
         arguments:
             - '@app.datatable.extractor.product'
         tags:
@@ -143,15 +143,10 @@ The data displayed in the Datatable will be fetched from the DataController in t
 Pass the datatable into the Twig template:
 
 ```php
-/**
- * @var DatatableInterface
- */
-private $datatable;
-
 public function listAction()
 {
     retun $this->renderer->renderResponse('path/to/twig.html.twig', [
-        'table' => $this->datatable
+        'table' => $this->get('app.datatable.table.product');
     ]);
 }
 ```
