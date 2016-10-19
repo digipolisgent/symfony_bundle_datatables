@@ -1,5 +1,4 @@
 <?php
-declare(strict_types = 1);
 namespace Avdb\DatatablesBundle\Column;
 
 use Avdb\DatatablesBundle\Exception\RuntimeException;

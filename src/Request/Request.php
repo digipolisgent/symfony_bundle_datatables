@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php 
 namespace Avdb\DatatablesBundle\Request;
 
 use Symfony\Component\HttpFoundation\Request as HttpRequest;

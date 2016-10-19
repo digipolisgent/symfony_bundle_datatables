@@ -3,6 +3,7 @@ namespace Avdb\DatatablesBundle\Twig;
 
 use Avdb\DatatablesBundle\Column\ColumnInterface;
 use Avdb\DatatablesBundle\Datatable\DatatableInterface;
+use Symfony\Bridge\Twig\AppVariable;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -95,12 +96,25 @@ class DatatablesExtension extends \Twig_Extension
     public function renderTable(\Twig_Environment $twig, DatatableInterface $table, array $options = [])
     {
         $options = array_merge($this->options, $options);
-
         return $twig->render($options['template'], [
             'table'   => $table,
             'options' => $options,
-            'uri'     => $this->router->generate('avdb_datatables.data_api', ['alias' => $table->getAlias()])
+            'uri'     => $this->router->generate('avdb_datatables.data_api', [
+                'alias'     => $table->getAlias(),
+                '_locale'   => $this->getLocale($twig)
+            ])
         ]);
+    }
+
+    /**
+     * @param \Twig_Environment $twig
+     * @return string
+     */
+    private function getLocale(\Twig_Environment $twig)
+    {
+        /** @var AppVariable $app */
+        $app = $twig->getGlobals()['app'];
+        return $app->getRequest()->getLocale();
     }
 
     /**
