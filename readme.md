@@ -1,3 +1,5 @@
+[![Build status](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)
+
 #Avdb Datatables
 
 ## Installing this bundle :
