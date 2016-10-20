@@ -12,6 +12,5 @@ class DatatablesExceptionTest extends DatatablesTestCase
         $exception = new DatatablesException;
         $this->assertInstanceOf(DatatablesException::class, $exception);
         $this->assertInstanceOf(\Exception::class, $exception);
-        $this->assertInstanceOf(\Throwable::class, $exception);
     }
 }

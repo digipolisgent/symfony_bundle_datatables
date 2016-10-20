@@ -84,7 +84,8 @@ class Request implements RequestInterface
      */
     public function getSort()
     {
-        $columnIndex = $this->request->query->get('order', [])[0]['column'] ?? false;
+        $order = $this->request->query->get('order', []);
+        $columnIndex = isset($order[0]['column']) ? $order[0]['column'] : false;
         $sort = $this->defaults['sort'];
 
         if (false === $columnIndex) {
@@ -107,7 +108,8 @@ class Request implements RequestInterface
      */
     public function getOrder()
     {
-        return (string)($this->request->query->get('order', [])[0]['dir'] ?? $this->defaults['order']);
+        $order = $this->request->query->get('order', []);
+        return isset($order[0]['dir']) ? $order[0]['dir'] : $this->defaults['order'];
     }
 
     /**
@@ -117,7 +119,8 @@ class Request implements RequestInterface
      */
     public function getSearch()
     {
-        return (string)($this->request->query->get('search', [])['value'] ?? null);
+        $search = $this->request->query->get('search', []);
+        return isset($search['value']) ? $search['value'] : null;
     }
 
     /**

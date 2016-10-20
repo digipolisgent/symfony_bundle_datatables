@@ -13,7 +13,6 @@ class DatatableNotFoundExceptionTest extends DatatablesTestCase
         $this->assertInstanceOf(DatatableNotFoundException::class, $exception);
         $this->assertInstanceOf(DatatablesException::class, $exception);
         $this->assertInstanceOf(\Exception::class, $exception);
-        $this->assertInstanceOf(\Throwable::class, $exception);
     }
 
     public function testFromAlias()

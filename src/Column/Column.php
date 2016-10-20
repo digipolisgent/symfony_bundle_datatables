@@ -41,10 +41,11 @@ class Column implements ColumnInterface
      */
     protected function optionsResolver()
     {
+        $property = isset($this->options['property']) ? $this->options['property'] : $this->name;
         $resolver = new OptionsResolver();
         $resolver->setDefaults([
             'property'   => $this->name,
-            'extractor'  => new PropertyExtractor($this->options['property'] ?? $this->name),
+            'extractor'  => new PropertyExtractor($property),
             'attributes' => ['data-name' => $this->name],
             'label'      => ucfirst($this->name)
         ]);

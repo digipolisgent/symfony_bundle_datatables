@@ -16,8 +16,10 @@ class DatatableNotFoundException extends DatatablesException
      */
     public static function fromAlias($alias)
     {
-        return new static(
-            "Datatable $alias was not registered as a datatable, did you forget to tag the datatable ?"
-        );
+        return new self(sprintf(
+            'Datatable %s was not registered as a datatable, did you forget to tag the datatable ?',
+            $alias
+        ));
+
     }
 }
