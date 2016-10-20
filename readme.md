@@ -1,4 +1,5 @@
 [![Build status](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/avdb/datatables-bundle.svg)](https://packagist.org/packages/avdb/datatables-bundle)
 
 #Avdb Datatables
 
