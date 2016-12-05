@@ -63,4 +63,9 @@ gulp.task('sass-font-awesome', function(done){
         .on('end', done)
 });
 
+gulp.task('watch', function(){
+    gulp.watch('./assets-src/scripts/*.js', ['scripts', 'scripts-bootstrap']);
+    gulp.watch('./assets-src/scripts/*.scss', ['sass-bootstrap', 'sass-font-awesome'])
+});
+
 gulp.task('default', ['scripts', 'scripts-bootstrap', 'sass-bootstrap', 'sass-font-awesome']);

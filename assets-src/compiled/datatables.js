@@ -15299,15 +15299,15 @@
     $.extend($, {DatatablesManager: Manager});
 })(jQuery);
 
-(function($){
-    $(function(){
+(function ($) {
+    $(function () {
         $('table.datatable').each(function () {
             var $table = $(this).DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": {
                     "url": $(this).data('uri'),
-                    "data": function(data){
+                    "data": function (data) {
                         var $form = $('form[datatables="filter"]');
 
                         if ($form.length > 0) {
@@ -15316,8 +15316,7 @@
                     }
                 }
             });
-
-           $.DatatablesManager.register($(this).data('alias'), $table);
+            $.DatatablesManager.register($(this).data('alias'), $table);
         });
     });
 })(jQuery);
