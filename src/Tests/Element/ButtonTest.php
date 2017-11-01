@@ -10,7 +10,7 @@ class ButtonTest extends DatatablesTestCase
     public function testHasDefaultOptions()
     {
         $button = Button::generate();
-        $this->assertEquals('<a href="#" class="btn btn-danger btn-flat ">Edit</a>', $button);
+        $this->assertEquals('<a href="#" class="btn btn-danger btn-flat " >Edit</a>', $button);
     }
     
     public function testGenerateButtonWithOptions()
