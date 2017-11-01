@@ -15,7 +15,7 @@ class Button implements ElementInterface
      *
      * @var string
      */
-    protected static $template = '<a href="%s" class="btn btn-%s btn-flat %s">%s</a>';
+    protected static $template = '<a href="%s" class="btn btn-%s btn-flat %s" %s>%s</a>';
 
     /**
      * Default button options
@@ -27,6 +27,7 @@ class Button implements ElementInterface
         'type'  => 'danger',
         'class' => null,
         'text'  => 'Edit',
+        'attributes' => []
     ];
 
     /**
@@ -39,11 +40,20 @@ class Button implements ElementInterface
     {
         $options = array_merge(self::$defaultOptions, $options);
 
+        $formatted = [];
+
+        foreach($options['attributes'] as $attribute => $value) {
+            $formatted[$attribute] = "$attribute=\"$value\"";
+        }
+
+        $options['attributes'] = $formatted;
+
         return sprintf(
             self::$template,
             (string)$options['link'],
             (string)$options['type'],
             (string)$options['class'],
+            (string)implode($options['attributes'], ' '),
             (string)$options['text']
         );
     }
