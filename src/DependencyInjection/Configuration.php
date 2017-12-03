@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode->children()
             ->scalarNode('table_template')
-            ->defaultValue('DatatablesBundle:Datatables:default_table.html.twig')
+            ->defaultValue('@Datatables/Datatables/default_table.html.twig')
             ->end();
 
         return $treeBuilder;
