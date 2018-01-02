@@ -18,9 +18,10 @@ interface RequestInterface
     /**
      * Get Page size from request
      *
+     * @param null|string $default
      * @return integer
      */
-    public function getPageSize();
+    public function getPageSize($default = null);
 
     /**
      * Get page number from request
@@ -39,16 +40,18 @@ interface RequestInterface
     /**
      * Extracts the sort parameter from the request object
      *
+     * @param null|string $default
      * @return string
      */
-    public function getSort();
+    public function getSort($default = null);
 
     /**
      * Extracts the order parameter from the request object
      *
+     * @param null|string $default
      * @return string
      */
-    public function getOrder();
+    public function getOrder($default = null);
 
     /**
      * Extracts the search parameter from the request object

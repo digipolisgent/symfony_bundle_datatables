@@ -20,7 +20,7 @@ class Request implements RequestInterface
      *
      * @var array
      */
-    protected $defaults = [
+    protected static $defaults = [
         'order'     => 'desc',
         'sort'      => 'id',
         'page_size' => 10,
@@ -37,7 +37,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return HttpRequest
+     * @inheritdoc
      */
     public function getHttpRequest()
     {
@@ -45,19 +45,19 @@ class Request implements RequestInterface
     }
 
     /**
-     * Get Page size from request
-     *
-     * @return integer
+     * @inheritdoc
      */
-    public function getPageSize()
+    public function getPageSize($default = null)
     {
-        return (int)$this->request->query->get('length', $this->defaults['page_size']);
+        if(null === $default) {
+            $default = self::$defaults['page_size'];
+        }
+
+        return (int)$this->request->query->get('length', (int)$default);
     }
 
     /**
-     * Get page number from request
-     *
-     * @return int
+     * @inheritdoc
      */
     public function getPage()
     {
@@ -68,9 +68,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * Returns the offset of data requested
-     * 
-     * @return int
+     * @inheritdoc
      */
     public function getOffset()
     {
@@ -78,44 +76,45 @@ class Request implements RequestInterface
     }
 
     /**
-     * Extracts the sort parameter from the request object
-     *
-     * @return string
+     * @inheritdoc
      */
-    public function getSort()
+    public function getSort($default = null)
     {
         $order = $this->request->query->get('order', []);
+
         $columnIndex = isset($order[0]['column']) ? $order[0]['column'] : false;
-        $sort = $this->defaults['sort'];
 
         if (false === $columnIndex) {
-            return $sort;
+            return $default ?: self::$defaults['sort'];
         }
 
         $columns = $this->request->query->get('columns', []);
 
         if (isset($columns[$columnIndex]['name'])) {
             $sort = $columns[$columnIndex]['name'];
+        }else{
+            return $default ?: self::$defaults['sort'];
         }
 
         return (string)$sort;
     }
 
     /**
-     * Extracts the order parameter from the request object
-     *
-     * @return string
+     * @inheritdoc
      */
-    public function getOrder()
+    public function getOrder($default = null)
     {
         $order = $this->request->query->get('order', []);
-        return isset($order[0]['dir']) ? $order[0]['dir'] : $this->defaults['order'];
+
+        if(isset($order[0]['dir'])) {
+            return $order[0]['dir'];
+        }
+
+        return $default ?: self::$defaults['order'];
     }
 
     /**
-     * Extracts the search parameter from the request object
-     *
-     * @return string
+     * @inheritdoc
      */
     public function getSearch()
     {
@@ -124,7 +123,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getDraw()
     {
