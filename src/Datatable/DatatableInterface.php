@@ -30,6 +30,22 @@ interface DatatableInterface
     public function addColumn(ColumnInterface $column);
 
     /**
+     * Sets an option, passed to the javascript options array used by DataTables.net
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return mixed
+     */
+    public function setOption($name, $value);
+
+    /**
+     * Returns an array of options
+     *
+     * @return array
+     */
+    public function getOptions();
+
+    /**
      * Creates a Column element and adds it tho the DataTable's columns
      *
      * @param string $name

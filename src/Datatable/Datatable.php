@@ -32,6 +32,11 @@ class Datatable implements DatatableInterface
     private $columns;
 
     /**
+     * @var array
+     */
+    private $options = [];
+
+    /**
      * Datatable constructor.
      *
      * @param string $alias
@@ -73,6 +78,22 @@ class Datatable implements DatatableInterface
         }
 
         return new Response($data, $result->getTotalRecords(), $request->getDraw() + 1);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setOption($name, $value)
+    {
+        $this->options[$name] = $value;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     /**

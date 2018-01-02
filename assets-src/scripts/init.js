@@ -1,7 +1,7 @@
 (function ($) {
     $(function () {
         $('table.datatable').each(function () {
-            var $table = $(this).DataTable({
+            var defaultOptions = {
                 "processing": true,
                 "serverSide": true,
                 "ajax": {
@@ -14,7 +14,11 @@
                         }
                     }
                 }
-            });
+            };
+
+            var $options = $.extend({}, defaultOptions, $(this).data('options'));
+            var $table = $(this).DataTable($options);
+
             $.DatatablesManager.register($(this).data('alias'), $table);
         });
     });
