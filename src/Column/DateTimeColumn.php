@@ -1,14 +1,14 @@
 <?php
-namespace Avdb\DatatablesBundle\Column;
+namespace DigipolisGent\DatatablesBundle\Column;
 
-use Avdb\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class DateTimeColumn
  * DateTimeColumn displays a DateTime object as a string with the defined format
  *
- * @package Avdb\DatatablesBundle\Column
+ * @package DigipolisGent\DatatablesBundle\Column
  */
 class DateTimeColumn extends Column
 {

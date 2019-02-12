@@ -1,10 +1,10 @@
 <?php
-namespace Avdb\DatatablesBundle\Exception;
+namespace DigipolisGent\DatatablesBundle\Exception;
 
 /**
  * Class InvalidArgumentException
  *
- * @package Avdb\DatatablesBundle\Exception
+ * @package DigipolisGent\DatatablesBundle\Exception
  */
 class InvalidArgumentException extends DatatablesException
 {

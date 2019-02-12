@@ -1,6 +1,6 @@
 <?php
 
-namespace Avdb\DatatablesBundle\DependencyInjection;
+namespace DigipolisGent\DatatablesBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

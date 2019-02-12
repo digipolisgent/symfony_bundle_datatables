@@ -1,9 +1,9 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Element;
+namespace DigipolisGent\DatatablesBundle\Tests\Element;
 
-use Avdb\DatatablesBundle\Element\Button;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Element\Button;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class ButtonTest extends DatatablesTestCase
 {

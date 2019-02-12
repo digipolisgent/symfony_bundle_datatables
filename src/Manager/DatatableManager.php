@@ -1,16 +1,16 @@
 <?php
-namespace Avdb\DatatablesBundle\Manager;
+namespace DigipolisGent\DatatablesBundle\Manager;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
-use Avdb\DatatablesBundle\Exception\DatatableNotFoundException;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Exception\DatatableNotFoundException;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
 
 /**
  * Class DatatableManager
  * DatatableManager holds all the Datatables
  * 
- * @package Avdb\DatatablesBundle\Manager
+ * @package DigipolisGent\DatatablesBundle\Manager
  */
 class DatatableManager implements DatatableManagerInterface
 {

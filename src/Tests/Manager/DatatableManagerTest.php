@@ -1,12 +1,12 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Manager;
+namespace DigipolisGent\DatatablesBundle\Tests\Manager;
 
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
-use Avdb\DatatablesBundle\Exception\DatatableNotFoundException;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
-use Avdb\DatatablesBundle\Manager\DatatableManager;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Exception\DatatableNotFoundException;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Manager\DatatableManager;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class DatatableManagerTest extends DatatablesTestCase
 {

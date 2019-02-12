@@ -1,28 +1,28 @@
 services:
     # Controller
-    avdb_datatables.controller:
-        class: Avdb\DatatablesBundle\Controller\DataController
+    digipolisgent_datatables.controller:
+        class: DigipolisGent\DatatablesBundle\Controller\DataController
         public: true
         arguments:
-            - '@avdb_datatables.manager'
+            - '@digipolisgent_datatables.manager'
 
     # Manager
-    avdb_datatables.manager:
-        class: Avdb\DatatablesBundle\Manager\DatatableManager
+    digipolisgent_datatables.manager:
+        class: DigipolisGent\DatatablesBundle\Manager\DatatableManager
 
 
     # Twig
-    avdb_datatables.twig_extension:
-        class: Avdb\DatatablesBundle\Twig\DatatablesExtension
+    digipolisgent_datatables.twig_extension:
+        class: DigipolisGent\DatatablesBundle\Twig\DatatablesExtension
         arguments:
             - '@translator'
             - '@router'
-            - { template: '%avdb_datatables.table_template%' }
+            - { template: '%digipolisgent_datatables.table_template%' }
         tags:
             - { name: 'twig.extension' }
 
     # Command
-    avdb_datatables.command.generate_tables:
-      class: Avdb\DatatablesBundle\Command\GenerateTableCommand
+    digipolisgent_datatables.command.generate_tables:
+      class: DigipolisGent\DatatablesBundle\Command\GenerateTableCommand
       tags:
         - { name: 'console.command' }

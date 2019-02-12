@@ -1,8 +1,8 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests;
+namespace DigipolisGent\DatatablesBundle\Tests;
 
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
 
 abstract class DatatablesTestCase extends \PHPUnit_Framework_TestCase
 {

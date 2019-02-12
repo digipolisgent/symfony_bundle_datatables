@@ -1,18 +1,18 @@
 <?php
-namespace Avdb\DatatablesBundle\Datatable;
+namespace DigipolisGent\DatatablesBundle\Datatable;
 
-use Avdb\DatatablesBundle\Column\Column;
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\DataExtractor\DataExtractorInterface;
-use Avdb\DatatablesBundle\DataExtractor\ExtractionInterface;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
-use Avdb\DatatablesBundle\Request\RequestInterface;
-use Avdb\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Column\Column;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\DataExtractor\DataExtractorInterface;
+use DigipolisGent\DatatablesBundle\DataExtractor\ExtractionInterface;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Request\RequestInterface;
+use DigipolisGent\DatatablesBundle\Response\Response;
 
 /**
  * Class Datatable
  *
- * @package Avdb\DatatablesBundle\Datatable
+ * @package DigipolisGent\DatatablesBundle\Datatable
  */
 class Datatable implements DatatableInterface
 {

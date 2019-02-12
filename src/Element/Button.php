@@ -1,12 +1,12 @@
 <?php
-namespace Avdb\DatatablesBundle\Element;
+namespace DigipolisGent\DatatablesBundle\Element;
 
 /**
  * Class Button
  *
  * Creates a HTML-button with bootstrap markup
  *
- * @package Avdb\DatatablesBundle\Element
+ * @package DigipolisGent\DatatablesBundle\Element
  */
 class Button implements ElementInterface
 {

@@ -1,11 +1,11 @@
 <?php
-namespace Avdb\DatatablesBundle\DataExtractor;
+namespace DigipolisGent\DatatablesBundle\DataExtractor;
 
 /**
  * Class ExtractionInterface
  * Holds the data and the total records count from the DataExtractor
  *
- * @package Avdb\DatatablesBundle\DataExtractor
+ * @package DigipolisGent\DatatablesBundle\DataExtractor
  */
 interface ExtractionInterface
 {

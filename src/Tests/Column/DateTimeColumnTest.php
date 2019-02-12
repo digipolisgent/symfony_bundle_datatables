@@ -1,10 +1,10 @@
 <?php
-namespace Avdb\DatatablesBundle\Tests\Column;
+namespace DigipolisGent\DatatablesBundle\Tests\Column;
 
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\Column\DateTimeColumn;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\Column\DateTimeColumn;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 class DateTimeColumnTest extends DatatablesTestCase

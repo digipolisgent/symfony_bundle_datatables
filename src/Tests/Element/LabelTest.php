@@ -1,8 +1,8 @@
 <?php
-namespace Avdb\DatatablesBundle\Tests\Element;
+namespace DigipolisGent\DatatablesBundle\Tests\Element;
 
-use Avdb\DatatablesBundle\Element\Label;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Element\Label;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class LabelTest extends DatatablesTestCase
 {

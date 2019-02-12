@@ -1,12 +1,12 @@
 <?php
-namespace Avdb\DatatablesBundle\Element;
+namespace DigipolisGent\DatatablesBundle\Element;
 
 /**
  * Class Label
  *
  * Creates a HTML-Label for Bootstrap3
  *
- * @package Avdb\DatatablesBundle\Element
+ * @package DigipolisGent\DatatablesBundle\Element
  */
 class Label implements ElementInterface
 {

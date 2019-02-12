@@ -1,14 +1,14 @@
 <?php
-namespace Avdb\DatatablesBundle\Datatable;
+namespace DigipolisGent\DatatablesBundle\Datatable;
 
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\Request\RequestInterface;
-use Avdb\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\Request\RequestInterface;
+use DigipolisGent\DatatablesBundle\Response\Response;
 
 /**
  * Interface DatatableInterface
  *
- * @package Avdb\DatatablesBundle\Datatable
+ * @package DigipolisGent\DatatablesBundle\Datatable
  */
 interface DatatableInterface
 {

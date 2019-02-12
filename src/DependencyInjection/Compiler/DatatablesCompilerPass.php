@@ -1,8 +1,8 @@
 <?php
-namespace Avdb\DatatablesBundle\DependencyInjection\Compiler;
+namespace DigipolisGent\DatatablesBundle\DependencyInjection\Compiler;
 
-use Avdb\DatatablesBundle\DependencyInjection\Configuration;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\DependencyInjection\Configuration;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Reference;
  * Class DatatableCompilerPass
  * Registers the Datatables in the DatatableManager
  * 
- * @package Avdb\DatatablesBundle\DependencyInjection\Compiler
+ * @package DigipolisGent\DatatablesBundle\DependencyInjection\Compiler
  */
 class DatatablesCompilerPass implements CompilerPassInterface
 {

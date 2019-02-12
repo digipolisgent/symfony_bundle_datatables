@@ -1,8 +1,8 @@
 <?php
-namespace Avdb\DatatablesBundle\Tests\Column;
+namespace DigipolisGent\DatatablesBundle\Tests\Column;
 
-use Avdb\DatatablesBundle\Column\PropertyExtractor;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Column\PropertyExtractor;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class PropertyExtractorTest extends DatatablesTestCase
 {

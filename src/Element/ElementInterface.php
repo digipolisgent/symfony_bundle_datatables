@@ -1,5 +1,5 @@
 <?php
-namespace Avdb\DatatablesBundle\Element;
+namespace DigipolisGent\DatatablesBundle\Element;
 
 interface ElementInterface
 {

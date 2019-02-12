@@ -1,17 +1,17 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Datatable;
+namespace DigipolisGent\DatatablesBundle\Tests\Datatable;
 
-use Avdb\DatatablesBundle\Column\Column;
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\DataExtractor\DataExtractorInterface;
-use Avdb\DatatablesBundle\DataExtractor\Extraction;
-use Avdb\DatatablesBundle\Datatable\Datatable;
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
-use Avdb\DatatablesBundle\Request\RequestInterface;
-use Avdb\DatatablesBundle\Response\Response;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Column\Column;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\DataExtractor\DataExtractorInterface;
+use DigipolisGent\DatatablesBundle\DataExtractor\Extraction;
+use DigipolisGent\DatatablesBundle\Datatable\Datatable;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\Request\RequestInterface;
+use DigipolisGent\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DatatableTest extends DatatablesTestCase

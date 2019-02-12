@@ -1,10 +1,10 @@
 <?php
-namespace Avdb\DatatablesBundle\Exception;
+namespace DigipolisGent\DatatablesBundle\Exception;
 
 /**
  * Class DatatablesException
  *
- * @package Avdb\DatatablesBundle\Exception
+ * @package DigipolisGent\DatatablesBundle\Exception
  */
 class DatatablesException extends \Exception
 {

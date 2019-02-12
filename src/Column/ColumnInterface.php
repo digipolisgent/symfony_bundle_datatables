@@ -1,10 +1,10 @@
 <?php
-namespace Avdb\DatatablesBundle\Column;
+namespace DigipolisGent\DatatablesBundle\Column;
 
 /**
  * Interface ColumnInterface
  *
- * @package Avdb\DatatablesBundle\Column
+ * @package DigipolisGent\DatatablesBundle\Column
  */
 interface ColumnInterface
 {

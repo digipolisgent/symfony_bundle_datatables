@@ -1,13 +1,10 @@
-[![Build status](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)](https://travis-ci.org/avandenbogaert/DatatablesBundle.svg?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/avdb/datatables-bundle.svg)](https://packagist.org/packages/avdb/datatables-bundle)
-
-#Avdb Datatables
+# DigipolisGent Datatables
 
 ## Installing this bundle :
 
 #### 1. Composer Require
 ```sh
-$php composer require avdb/datatables-bundle
+$php composer require digipolisgent/datatables-bundle
 ```
 
 #### 2. Enable the bundle
@@ -18,7 +15,7 @@ public function registerBundles()
 {
     $bundles = [
         // other bundles
-        new Avdb\DatatablesBundle\DatatablesBundle(),
+        new DigipolisGent\DatatablesBundle\DatatablesBundle(),
     ];
 }
 ```
@@ -119,12 +116,12 @@ services:
 
     #  Table
     app.datatable.table.product:
-        class: Avdb\DatatablesBundle\Datatable\Datatable
+        class: DigipolisGent\DatatablesBundle\Datatable\Datatable
         factory: [App\AppBundle\Factory\ProductTableFactory, 'create']
         arguments:
             - '@app.datatable.extractor.product'
         tags:
-            - {name: 'avdb_datatables.table'}
+            - {name: 'digipolisgent_datatables.table'}
 
 ```
 
