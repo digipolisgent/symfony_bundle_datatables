@@ -1,8 +1,8 @@
 <?php
-namespace Avdb\DatatablesBundle\Twig;
+namespace DigipolisGent\DatatablesBundle\Twig;
 
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
 use Symfony\Bridge\Twig\AppVariable;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\RouterInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 /**
  * Class DatatableExtension
  *
- * @package Avdb\DatatablesBundle\Twig
+ * @package DigipolisGent\DatatablesBundle\Twig
  */
 class DatatablesExtension extends \Twig_Extension
 {
@@ -99,7 +99,7 @@ class DatatablesExtension extends \Twig_Extension
         return $twig->render($options['template'], [
             'table'   => $table,
             'options' => $options,
-            'uri'     => $this->router->generate('avdb_datatables.data_api', [
+            'uri'     => $this->router->generate('digipolisgent_datatables.data_api', [
                 'alias'     => $table->getAlias(),
                 '_locale'   => $this->getLocale($twig)
             ])
@@ -122,6 +122,6 @@ class DatatablesExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'avdb_datatables';
+        return 'digipolisgent_datatables';
     }
 }

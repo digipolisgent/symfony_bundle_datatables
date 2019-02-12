@@ -1,10 +1,10 @@
 <?php
-namespace Avdb\DatatablesBundle\Tests\Column;
+namespace DigipolisGent\DatatablesBundle\Tests\Column;
 
-use Avdb\DatatablesBundle\Column\Column;
-use Avdb\DatatablesBundle\Column\ColumnInterface;
-use Avdb\DatatablesBundle\Column\PropertyExtractor;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Column\Column;
+use DigipolisGent\DatatablesBundle\Column\ColumnInterface;
+use DigipolisGent\DatatablesBundle\Column\PropertyExtractor;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 

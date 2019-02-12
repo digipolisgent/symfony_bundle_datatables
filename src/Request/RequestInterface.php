@@ -1,12 +1,12 @@
 <?php
-namespace Avdb\DatatablesBundle\Request;
+namespace DigipolisGent\DatatablesBundle\Request;
 
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Interface RequestInterface
  *
- * @package Avdb\DatatablesBundle\Request
+ * @package DigipolisGent\DatatablesBundle\Request
  */
 interface RequestInterface
 {

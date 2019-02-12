@@ -1,10 +1,10 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Request;
+namespace DigipolisGent\DatatablesBundle\Tests\Request;
 
-use Avdb\DatatablesBundle\Request\Request as DatatableRequest;
-use Avdb\DatatablesBundle\Request\RequestInterface;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Request\Request as DatatableRequest;
+use DigipolisGent\DatatablesBundle\Request\RequestInterface;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 class RequestTest extends DatatablesTestCase

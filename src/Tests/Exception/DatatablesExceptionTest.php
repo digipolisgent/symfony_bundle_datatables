@@ -1,9 +1,9 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Exception;
+namespace DigipolisGent\DatatablesBundle\Tests\Exception;
 
-use Avdb\DatatablesBundle\Exception\DatatablesException;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Exception\DatatablesException;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class DatatablesExceptionTest extends DatatablesTestCase
 {

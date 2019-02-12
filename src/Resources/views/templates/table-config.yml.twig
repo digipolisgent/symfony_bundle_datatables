@@ -9,9 +9,9 @@ services:
         {% endif %}
 
     {{ datatable_service }}:
-        class: Avdb\DatatablesBundle\Datatable\Datatable
+        class: DigipolisGent\DatatablesBundle\Datatable\Datatable
         factory: [{{ class_factory }}, 'create']
         arguments:
             - '@{{ extractor_service }}'
         tags:
-            - { name: 'avdb_datatables.table' }
+            - { name: 'digipolisgent_datatables.table' }

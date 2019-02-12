@@ -1,9 +1,9 @@
 <?php
-namespace Avdb\DatatablesBundle\Command;
+namespace DigipolisGent\DatatablesBundle\Command;
 
-use Avdb\DatatablesBundle\DependencyInjection\Configuration;
-use Avdb\DatatablesBundle\Exception\InvalidArgumentException;
-use Avdb\DatatablesBundle\Exception\RuntimeException;
+use DigipolisGent\DatatablesBundle\DependencyInjection\Configuration;
+use DigipolisGent\DatatablesBundle\Exception\InvalidArgumentException;
+use DigipolisGent\DatatablesBundle\Exception\RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;

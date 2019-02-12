@@ -1,16 +1,16 @@
 <?php
-namespace Avdb\DatatablesBundle\Controller;
+namespace DigipolisGent\DatatablesBundle\Controller;
 
-use Avdb\DatatablesBundle\Manager\DatatableManagerInterface;
-use Avdb\DatatablesBundle\Request\Request;
-use Avdb\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Manager\DatatableManagerInterface;
+use DigipolisGent\DatatablesBundle\Request\Request;
+use DigipolisGent\DatatablesBundle\Response\Response;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class DataController
  * Returns the data for each Datatable
  * 
- * @package Avdb\DatatablesBundle\Controller
+ * @package DigipolisGent\DatatablesBundle\Controller
  */
 class DataController
 {

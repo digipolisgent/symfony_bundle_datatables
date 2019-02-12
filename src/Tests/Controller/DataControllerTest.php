@@ -1,12 +1,12 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Controller;
+namespace DigipolisGent\DatatablesBundle\Tests\Controller;
 
-use Avdb\DatatablesBundle\Controller\DataController;
-use Avdb\DatatablesBundle\Datatable\DatatableInterface;
-use Avdb\DatatablesBundle\Manager\DatatableManagerInterface;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
-use Avdb\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Controller\DataController;
+use DigipolisGent\DatatablesBundle\Datatable\DatatableInterface;
+use DigipolisGent\DatatablesBundle\Manager\DatatableManagerInterface;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Response\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class DataControllerTest extends DatatablesTestCase

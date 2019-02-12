@@ -1,12 +1,12 @@
 <?php
-namespace Avdb\DatatablesBundle\DataExtractor;
+namespace DigipolisGent\DatatablesBundle\DataExtractor;
 
-use Avdb\DatatablesBundle\Request\RequestInterface;
+use DigipolisGent\DatatablesBundle\Request\RequestInterface;
 
 /**
  * Interface DataExtractorInterface
  *
- * @package Avdb\DatatablesBundle\DataExtractor
+ * @package DigipolisGent\DatatablesBundle\DataExtractor
  */
 interface DataExtractorInterface
 {

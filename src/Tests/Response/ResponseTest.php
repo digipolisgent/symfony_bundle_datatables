@@ -1,9 +1,9 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\Response;
+namespace DigipolisGent\DatatablesBundle\Tests\Response;
 
-use Avdb\DatatablesBundle\Response\Response;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\Response\Response;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ResponseTest extends DatatablesTestCase

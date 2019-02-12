@@ -1,10 +1,10 @@
 <?php
 
-namespace Avdb\DatatablesBundle\Tests\DataExtractor;
+namespace DigipolisGent\DatatablesBundle\Tests\DataExtractor;
 
-use Avdb\DatatablesBundle\DataExtractor\Extraction;
-use Avdb\DatatablesBundle\DataExtractor\ExtractionInterface;
-use Avdb\DatatablesBundle\Tests\DatatablesTestCase;
+use DigipolisGent\DatatablesBundle\DataExtractor\Extraction;
+use DigipolisGent\DatatablesBundle\DataExtractor\ExtractionInterface;
+use DigipolisGent\DatatablesBundle\Tests\DatatablesTestCase;
 
 class ExtractionTest extends DatatablesTestCase
 {

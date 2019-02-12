@@ -1,12 +1,12 @@
 <?php
-namespace Avdb\DatatablesBundle\Response;
+namespace DigipolisGent\DatatablesBundle\Response;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class Response
  *
- * @package Avdb\DatatablesBundle\Response
+ * @package DigipolisGent\DatatablesBundle\Response
  */
 class Response extends JsonResponse
 {

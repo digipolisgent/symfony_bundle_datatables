@@ -1,5 +1,5 @@
 <?php
-namespace Avdb\DatatablesBundle\Column;
+namespace DigipolisGent\DatatablesBundle\Column;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -7,7 +7,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Class Column
  * Base Column class, can be extended or configured
  *
- * @package Avdb\DatatablesBundle\Column
+ * @package DigipolisGent\DatatablesBundle\Column
  */
 class Column implements ColumnInterface
 {
@@ -65,7 +65,7 @@ class Column implements ColumnInterface
      *
      * @param mixed $target
      * @return string
-     * @throws \Avdb\DatatablesBundle\Exception\InvalidArgumentException
+     * @throws \DigipolisGent\DatatablesBundle\Exception\InvalidArgumentException
      */
     public function extractValue($target)
     {

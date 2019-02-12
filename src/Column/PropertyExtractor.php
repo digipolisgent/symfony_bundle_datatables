@@ -1,5 +1,5 @@
 <?php
-namespace Avdb\DatatablesBundle\Column;
+namespace DigipolisGent\DatatablesBundle\Column;
 
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
@@ -7,7 +7,7 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
  * Class PropertyExtractor
  * Extracts the property for the column
  * 
- * @package Avdb\DatatablesBundle\Column
+ * @package DigipolisGent\DatatablesBundle\Column
  */
 class PropertyExtractor
 {

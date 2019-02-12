@@ -1,14 +1,14 @@
 <?php
-namespace Avdb\DatatablesBundle;
+namespace DigipolisGent\DatatablesBundle;
 
-use Avdb\DatatablesBundle\DependencyInjection\Compiler\DatatablesCompilerPass;
+use DigipolisGent\DatatablesBundle\DependencyInjection\Compiler\DatatablesCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class DatatablesBundle
  *
- * @package Avdb\DatatablesBundle
+ * @package DigipolisGent\DatatablesBundle
  */
 class DatatablesBundle extends Bundle
 {
